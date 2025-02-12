@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class= "card" style="height: 400px;">
+{% if user.is_authenticated %}
+
+  <p>Hi {{ user.username }}!</p>
+  <p><a href="{% url 'password_change' %}">Password Change</a></p>
+
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+      <button type="submit">Log Out</button>
+  </form>
+  {% else %}
+  <p>You are not logged in</p>
+  <div class="nav-links" style="text-align: center;">
+    <a style = "text-decoration: none;" href="{% url 'login' %}">Log In</a>
+    <a style = "text-decoration: none;" href="{% url 'signup' %}">Sign up</a>
+    <a style = "text-decoration: none;" href="{% url 'password_reset' %}">Password Reset</a>
+
+
+  </div>
+</div>
+{% endif %}
+{% endblock %}

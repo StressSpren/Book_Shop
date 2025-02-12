@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title%} Inventory {% endblock %}
+
+
+{%block content%}
+{% if user.is_authenticated %}
+
+
+
+<div class="displaybar">
+  {%for data in data %}
+  <!-- FOR loop Displaying the contents from the api/books -->
+  <div>
+    <img src="{{ data.cover_image }}" style="width: 100px; height: 150px">
+    <p style="font-size: small">{{ data.title }} </p> 
+  </div>
+  {% endfor %} <!-- End loop-->
+</div>
+
+{% endif %}
+{%endblock%}
+
+// git test

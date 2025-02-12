@@ -1,0 +1,100 @@
+main {
+    
+    background-color: lightgrey;
+    
+    
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fad9e0;
+    box-shadow:  1px 1px 1px 3px darkgrey;
+    border: 2px solid #fec1cf;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    height: 3rem;
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin-right: 3rem;
+    
+}
+
+.nav-links li a {
+    
+    color: #4a4a4a;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: "Just Me Again Down Here";
+    font-size: 1.25rem;
+
+
+
+}
+
+.nav-links li a:hover {
+   
+    text-decoration: underline;
+}
+
+.logo {
+
+    margin-left: 1rem;
+    font-size: 2rem;
+    font-family: "Just Me Again Down Here";
+
+    
+}
+
+
+.just-me-again-down-here-regular {
+    font-family: "Just Me Again Down Here", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.card{
+    background-color: #fad9e0 !important;
+    align-items: center;
+    text-align: center;
+    width: 95%;
+    height: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    
+    box-shadow: 2px 2px 2px 2px darkgray;
+    margin-bottom: 20px;
+}
+
+.card-body{
+    background-color: beige;
+    box-shadow: inset 2px 2px 2px 2px darkgrey;
+    border-radius: 12px;
+}
+
+
+.displaybar {
+ 
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    box-shadow:  1px 1px 1px 1px;
+    background-color: #fad9e0;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+    width: 95%;
+    margin: 0 auto;
+    overflow:auto;
+    
+
+}
