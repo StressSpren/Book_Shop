@@ -98,3 +98,10 @@ main {
     
 
 }
+
+.inv_img:hover {
+
+    border: 2px solid teal;
+
+    
+}

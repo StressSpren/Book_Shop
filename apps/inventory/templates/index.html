@@ -11,9 +11,10 @@
 <div class="displaybar">
   {%for data in data %}
   <!-- FOR loop Displaying the contents from the api/books -->
-  <div>
-    <img src="{{ data.cover_image }}" style="width: 100px; height: 150px">
-    <p style="font-size: small">{{ data.title }} </p> 
+  <div class="inv_img">
+    <a href="{% url 'home' %}">
+      <img src="{{ data.cover_image }}" style="width: 100px; height: 150px">
+    </a> 
   </div>
   {% endfor %} <!-- End loop-->
 </div>
