@@ -26,3 +26,22 @@ def fetch_data(request):
         books = []  # Fallback to empty list in case of error
 
     return render(request, 'index.html', {'data': books})
+
+
+def book_details(request, book_id):
+
+    url = f"http://127.0.0.1:8000/api/books/{book_id}"
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        books = data
+
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data: {e}")
+        books = []  # Fallback to empty list in case of error
+
+    return render(request, 'book_details.html', {'data': books})
+

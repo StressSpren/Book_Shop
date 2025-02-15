@@ -6,7 +6,7 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Books
         fields = [
-            'url', 'title', 'author',
+           'id', 'url', 'title', 'author',
             'description', 'cover_image', 
             'price', 'stock', 'published_date', 'isbn', 'category']
 
