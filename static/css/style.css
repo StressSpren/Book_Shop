@@ -81,7 +81,7 @@ main {
 }
 
 
-.displaybar {
+.displaybar_inv {
  
     border: 2px solid black;
     display: grid;
@@ -91,6 +91,19 @@ main {
     background-color: #fad9e0;
     border-radius: 8px;
     text-align: center;
+    padding: 10px;
+    width: 95%;
+    margin: 0 auto;
+    overflow:auto;
+    
+
+}
+.displaybar_details {
+ 
+    border: 2px solid black;
+    box-shadow:  1px 1px 1px 1px;
+    background-color: #fad9e0;
+    border-radius: 8px;
     padding: 10px;
     width: 95%;
     margin: 0 auto;

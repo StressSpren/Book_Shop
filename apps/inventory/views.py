@@ -38,6 +38,15 @@ def book_details(request, book_id):
         data = response.json()
         books = data
 
+        author_url = books.get('author')
+        author_response = requests.get(author_url)
+        author_data = author_response.json()
+
+        books['author_first'] = author_data.get('first_name')
+        books['author_last'] = author_data.get('last_name')
+        books['author_pic'] = author_data.get('profile_picture')
+        books['author_bio'] = author_data.get('bio')
+
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")

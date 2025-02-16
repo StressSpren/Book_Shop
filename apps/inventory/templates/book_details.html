@@ -6,14 +6,17 @@
 
 
 
-<div class="displaybar">
+<div class="displaybar_details">
 
   
-  <!-- FOR loop Displaying the contents from the api/books -->
-  <div class="inv_img">
+  <div>
     <p>{{data.title}}</p>
+    <img src={{ data.cover_image }} style="height: 160px; width: 100px;">
+    <p> {{ data.description }} </p>
+    <img src= {{ data.author_pic }} style="height: 160px; width: 100px;">
+    <p>{{ data.author_first }} {{ data.author_last}}</p>
+    <p> {{ data.author_bio }} </p>
   </div>
- 
   
 </div>
 
