@@ -2,6 +2,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+
     <form method="POST" action="{% url 'search_books' %}"> 
         {% csrf_token %}
         <input type="text" name="keyword" placeholder="Enter book title" required>
@@ -17,5 +18,7 @@
             <li>No books found.</li>
         {% endfor %}
     </ul>
+
+    
 {% endif %}
 {% endblock %}

@@ -84,15 +84,15 @@ urlpatterns = [
     <button type="submit">Log Out</button>
   </form> -->
 
+# Using the PATCH method to update api.
 
+url = "apiurl"
 
-# TODO: 
+response = requests.get(url)
+response.json()
 
-Add a details page for book, done by setting the urls to submit the image seleced into the url to direct to a details page
+todo = {"stock": 2}
 
-Design a presentable method to display books
-
-set the the permissions to read and access.
-
-clean up visuals on login screen and register screen
+response = requests.patch(url, json=todo)
+response.json()
 
