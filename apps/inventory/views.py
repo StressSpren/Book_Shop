@@ -54,3 +54,23 @@ def book_details(request, book_id):
 
     return render(request, 'book_details.html', {'data': books})
 
+
+def search_books(request):
+    url = f"http://127.0.0.1:8000/api/books"
+
+     
+    response = requests.get(url)
+    response.raise_for_status()
+    data = response.json()
+    books = data.get('results', [])
+    dict_book = {"matches": []}
+
+    if request.method == "POST":  
+        keyword = request.POST.get("keyword", "").lower()  # Get user input
+        for book in books:
+            if keyword in book['title'].lower():
+                dict_book["matches"].append(book)
+
+        # Render results page with matching books
+    return render(request, "search.html", {"books": dict_book["matches"]})
+
