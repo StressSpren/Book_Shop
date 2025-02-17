@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-    <p> hello </p>
+<p>{{ user.id }} </p>
     {% for bk in books%}
+        
         <p>{{bk.title}}</p>
     {% endfor %}
 {% endblock content %}
