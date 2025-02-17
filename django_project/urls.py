@@ -30,6 +30,7 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("api/", include('apps.api.urls')),
     path('inventory/', include('apps.inventory.urls')),
+    path('cart/', include('apps.cart.urls')),
 
                    
 ]
