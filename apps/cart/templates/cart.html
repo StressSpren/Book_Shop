@@ -1,10 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-<p>{{ user.id }} </p>
-    {% for bk in books%}
-        
-        <p>{{bk.title}}</p>
+
+
+<table class="table table-striped">
+    <tr>
+    <th>ID</th><th>Book</th><th>Price</th><th>Image</th>
+    </tr>
+    
+    {% for bk in cart %}
+        {%if user.username == bk.user_id.username %}
+            <tr>
+                <td>{{bk.user_id}}</td>
+                <td>{{bk.book.title}}</td>
+                <td>{{bk.book.price}}</td>
+                <td><img src="{{bk.book.cover_image.url}}" style="width: 100px; height: 150px;"></td>
+            </tr>
+        {% endif %}    
     {% endfor %}
+    
+</table>
 {% endblock content %}
 

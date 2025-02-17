@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import BookForm
 from apps.api.models import Books
+from .models import Cart
 
 # Create your views here.
 
@@ -8,8 +9,8 @@ from apps.api.models import Books
 
 def cart(request):
 
-    books = Books.objects.all()
+    cart = Cart.objects.all()
    
 
 
-    return render(request, "cart.html", {'books': books})
+    return render(request, "cart.html", {'cart': cart})
