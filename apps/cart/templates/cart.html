@@ -1,6 +1,10 @@
 {% extends "base.html" %}
-
 {% block content %}
-<p>CART</p>
 
-{% endblock  %}
+
+    <p> hello </p>
+    {% for bk in books%}
+        <p>{{bk.title}}</p>
+    {% endfor %}
+{% endblock content %}
+
