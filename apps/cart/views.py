@@ -10,7 +10,5 @@ from .models import Cart
 def cart(request):
 
     cart = Cart.objects.all()
-   
-
-
+    
     return render(request, "cart.html", {'cart': cart})

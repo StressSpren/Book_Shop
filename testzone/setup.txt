@@ -94,5 +94,8 @@ response.json()
 todo = {"stock": 2}
 
 response = requests.patch(url, json=todo)
+
+
+
 response.json()
 
