@@ -15,6 +15,14 @@
                 <td>{{bk.user_id}}</td>
                 <td>{{bk.book.title}}</td>
                 <td>{{bk.book.price}}</td>
+                <td>
+                    <form method="POST">
+                        {% csrf_token %}
+                    <input type="hidden" name="delete_item" value="true">
+                    <input type="hidden" name="cart_id" value="{{bk.id}}">
+                    <button type="submit">DELETE</button>
+                    </form>
+                </td>
             </tr>
             
         {% endif %}    
