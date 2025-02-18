@@ -16,6 +16,18 @@
     <img src= {{ data.author_pic }} style="height: 160px; width: 100px;">
     <p>{{ data.author_first }} {{ data.author_last}}</p>
     <p> {{ data.author_bio }} </p>
+    <p>{{ user.username }}</p>
+
+    {% comment %}
+    
+    Form to upload both user_id and the book into db
+    
+    {% endcomment %}
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit">Add to Basket</button>
+  </form>
+</body>
   </div>
   
 </div>

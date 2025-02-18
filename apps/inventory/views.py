@@ -1,5 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
+from .forms import CartForm
+from apps.cart.models import Cart
+from django.contrib.auth.decorators import login_required
+from apps.api.models import Books
+from apps.accounts.models import CustomUser
 
 # Create your views here.
 
@@ -27,7 +32,7 @@ def fetch_data(request):
 
     return render(request, 'index.html', {'data': books})
 
-
+@login_required
 def book_details(request, book_id):
 
     url = f"http://127.0.0.1:8000/api/books/{book_id}"
@@ -38,10 +43,11 @@ def book_details(request, book_id):
         data = response.json()
         books = data
 
+
+        # Author Allocation
         author_url = books.get('author')
         author_response = requests.get(author_url)
         author_data = author_response.json()
-
         books['author_first'] = author_data.get('first_name')
         books['author_last'] = author_data.get('last_name')
         books['author_pic'] = author_data.get('profile_picture')
@@ -52,7 +58,19 @@ def book_details(request, book_id):
         print(f"Error fetching data: {e}")
         books = []  # Fallback to empty list in case of error
 
-    return render(request, 'book_details.html', {'data': books})
+    if request.method == "POST":
+        form = CartForm(request.POST)
+        if form.is_valid():
+            cart_item = form.save(commit=False)
+            cart_item.user_id = CustomUser.objects.get(id=f"{request.user.id}")
+            cart_item.book = Books.objects.get(id=book_id)
+            cart_item.save()
+            return redirect('cart')
+
+    else:
+        form = CartForm()
+
+    return render(request, 'book_details.html', {'data': books, 'form': form})
 
 
 def search_books(request):
@@ -73,4 +91,5 @@ def search_books(request):
 
         # Render results page with matching books
     return render(request, "search.html", {"books": dict_book["matches"]})
+
 

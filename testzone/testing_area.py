@@ -63,15 +63,27 @@ import requests
 # """
 
 
+# import requests
+
+# keyword = "cards/named"
+
+# url = f"https://api.scryfall.com/" + keyword 
+
+# params = {"exact": "Black Lotus"}  # Replace with the card name you want
+
+# response = requests.get(url, params=params)
+
+# data = response.json()
+# card = data
+
+
+
 import requests
 
-keyword = "cards/named"
+url = f"http://127.0.0.1:8000/api/books/1"
 
-url = f"https://api.scryfall.com/" + keyword 
-
-params = {"exact": "Black Lotus"}  # Replace with the card name you want
-
-response = requests.get(url, params=params)
-
+response = requests.get(url)
+response.raise_for_status()
 data = response.json()
-card = data
+
+print(data)

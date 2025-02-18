@@ -7,7 +7,7 @@ from apps.accounts.models import CustomUser
 class Cart(models.Model):
 
     user_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
-    book = models.ForeignKey(Books,on_delete=models.SET_NULL, null = True)
+    book = models.ForeignKey(Books, on_delete=models.SET_NULL, null = True)
     
     
     def __str__(self):
