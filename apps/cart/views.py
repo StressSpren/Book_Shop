@@ -12,6 +12,11 @@ def cart(request):
     cart_all = Cart.objects.all()
     cart_item = Cart.objects.filter(user_id=request.user)
 
+    total_price = 0
+    for item in cart_item:
+        total_price += item.book.price
+
+
     if request.method == "POST":
         form = Cart_Deletion_Form(request.POST)
 
@@ -29,4 +34,4 @@ def cart(request):
     else:
         form = Cart_Deletion_Form()
 
-    return render(request, "cart.html", {'cart': cart_all, 'form': form})
+    return render(request, "cart.html", {'cart': cart_all, 'form': form, 'total_price': total_price})

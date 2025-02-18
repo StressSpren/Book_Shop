@@ -28,7 +28,7 @@
         {% endif %}    
     {% endfor %}
 </table>
-
+<p>Total Price: {{total_price}}</p>
 <form method="POST">
     {% csrf_token %}
     <input type="hidden" name="delete_cart" value="true">
