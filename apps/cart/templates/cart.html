@@ -16,9 +16,15 @@
                 <td>{{bk.book.title}}</td>
                 <td>{{bk.book.price}}</td>
             </tr>
+            
         {% endif %}    
     {% endfor %}
-    
 </table>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="delete_cart" value="true">
+    <button type="submit">Clear Basket</button>
+</form>
 {% endblock content %}
 

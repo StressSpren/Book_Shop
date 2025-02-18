@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 import requests
 from .forms import CartForm
-from apps.cart.models import Cart
 from django.contrib.auth.decorators import login_required
 from apps.api.models import Books
 from apps.accounts.models import CustomUser
