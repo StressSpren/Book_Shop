@@ -29,4 +29,4 @@ def cart(request):
     else:
         form = Cart_Deletion_Form()
 
-    return render(request, "cart.html", {'cart_item': cart_item, 'cart': cart_all, 'form': form})
+    return render(request, "cart.html", {'cart': cart_all, 'form': form})
