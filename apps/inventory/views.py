@@ -61,10 +61,10 @@ def book_details(request, book_id):
     if request.method == "POST":
         form = CartForm(request.POST)
         if form.is_valid():
-            cart_item = form.save(commit=False)
-            cart_item.user_id = CustomUser.objects.get(id=f"{request.user.id}")
-            cart_item.book = Books.objects.get(id=book_id)
-            cart_item.save()
+            cart_field = form.save(commit=False)
+            cart_field.user_id = CustomUser.objects.get(id=f"{request.user.id}")
+            cart_field.book = Books.objects.get(id=book_id)
+            cart_field.save()
             return redirect('cart')
 
     else:
