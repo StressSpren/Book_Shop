@@ -51,12 +51,18 @@ import requests
 
 
 
-# import requests
+import requests
+from requests.auth import HTTPBasicAuth
 
-# url = f"http://127.0.0.1:8000/api/books/1"
+url = f"http://127.0.0.1:8000/api/books/"
 
-# response = requests.get(url)
-# response.raise_for_status()
-# data = response.json()
+username="admin"
+password ="admin"
 
-# print(data)
+response = requests.get(url, auth=HTTPBasicAuth(username=username, password=password))
+response.raise_for_status()
+data = response.json()
+books = data.get('results', [])
+
+print(data)
+print(books)

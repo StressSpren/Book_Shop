@@ -5,11 +5,13 @@ from django.contrib.auth.decorators import login_required
 from apps.api.models import Books
 from apps.accounts.models import CustomUser
 
+
 # Create your views here.
 
 def fetch_data(request):
 
-    url = "http://127.0.0.1:8000/api/books"
+    url = f"http://127.0.0.1:8000/api/books/"
+    
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -51,6 +53,12 @@ def book_details(request, book_id):
         books['author_last'] = author_data.get('last_name')
         books['author_pic'] = author_data.get('profile_picture')
         books['author_bio'] = author_data.get('bio')
+
+        # Category Allocation
+        category_url = books.get('category')
+        category_response = requests.get(category_url)
+        cat_data = category_response.json()
+        books['category_name'] = cat_data.get('name')
 
 
     except requests.exceptions.RequestException as e:
