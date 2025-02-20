@@ -1,23 +1,23 @@
 import requests
 
 
-# # url = f"http://127.0.0.1:8000/api/books"
-# # response = requests.get(url)
-# # response.raise_for_status()
-# # data = response.json()
-# # books = data.get('results', [])
-# # print(books)
-# # keyword = "King"
-# # keyword = keyword.lower()
+# url = f"http://127.0.0.1:8000/api/books"
+# response = requests.get(url)
+# response.raise_for_status()
+# data = response.json()
+# books = data.get('results', [])
+# print(books)
+# keyword = "King"
+# keyword = keyword.lower()
 
-# # dict_book = {"matches": []}
+# dict_book = {"matches": []}
 
-# # for book in books:
+# for book in books:
     
-# #     if keyword in book['title'].lower():
-# #         dict_book["matches"].append(book)
+#     if keyword in book['title'].lower():
+#         dict_book["matches"].append(book)
 
-# # print(dict_book["matches"])
+# print(dict_book["matches"])
 
 
 
@@ -51,39 +51,12 @@ import requests
 
 
 
-
-
-# """ 
-
-
-#     TODO:
-#         - Create a functional searchbar (Done)
-#         - Make a Basket
-
-# """
-
-
 # import requests
 
-# keyword = "cards/named"
+# url = f"http://127.0.0.1:8000/api/books/1"
 
-# url = f"https://api.scryfall.com/" + keyword 
-
-# params = {"exact": "Black Lotus"}  # Replace with the card name you want
-
-# response = requests.get(url, params=params)
-
+# response = requests.get(url)
+# response.raise_for_status()
 # data = response.json()
-# card = data
 
-
-
-import requests
-
-url = f"http://127.0.0.1:8000/api/books/1"
-
-response = requests.get(url)
-response.raise_for_status()
-data = response.json()
-
-print(data)
+# print(data)
