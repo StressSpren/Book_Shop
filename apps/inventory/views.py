@@ -7,7 +7,7 @@ from apps.accounts.models import CustomUser
 
 
 # Create your views here.
-
+@login_required
 def fetch_data(request):
 
     url = f"http://127.0.0.1:8000/api/books/"
@@ -49,6 +49,8 @@ def book_details(request, book_id):
         author_url = books.get('author')
         author_response = requests.get(author_url)
         author_data = author_response.json()
+
+        # Data
         books['author_first'] = author_data.get('first_name')
         books['author_last'] = author_data.get('last_name')
         books['author_pic'] = author_data.get('profile_picture')
@@ -58,6 +60,8 @@ def book_details(request, book_id):
         category_url = books.get('category')
         category_response = requests.get(category_url)
         cat_data = category_response.json()
+        
+        # Data
         books['category_name'] = cat_data.get('name')
 
 
@@ -79,7 +83,7 @@ def book_details(request, book_id):
 
     return render(request, 'book_details.html', {'data': books, 'form': form})
 
-
+@login_required
 def search_books(request):
     url = f"http://127.0.0.1:8000/api/books"
 
