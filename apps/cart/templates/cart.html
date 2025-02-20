@@ -5,13 +5,15 @@
 
 <table class="table table-striped">
     <tr>
-    <th>Book</th><th>Price</th>
-    
-    <th><form method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="delete_cart" value="true">
-        <button type="submit">Clear Basket</button>
-    </form></th>
+    <th>Book</th>
+    <th>Price</th>
+    <th>
+        <form method="POST">
+            {% csrf_token %}
+                <input type="hidden" name="delete_cart" value="true">
+                <button type="submit">Clear Basket</button>
+        </form>
+    </th>
     </tr>
     
     {% for bk in cart %}
