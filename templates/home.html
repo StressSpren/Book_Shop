@@ -1,32 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Home{% endblock %}
-{% block content %}
 
+{% block content %}
 <div class="login-card">
   {% if user.is_authenticated %}
+    <!-- Display a greeting message if the user is authenticated -->
+    <p>Hi {{ user.username }}!</p>
 
-  <p>Hi {{ user.username }}!</p>
+    <!-- Navigation links for authenticated users -->
+    <ul class="nav-links">
+      <li><a href="{% url 'password_change' %}">Password Change</a></li>
+    </ul>
 
-  <ul class="nav-links">
-    <li><a href="{% url 'password_change' %}">Password Change</a></li>
-  </ul>
-
-  <form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
+    <!-- Logout form -->
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
       <button type="submit">Log Out</button>
-  </form>
-
+    </form>
   {% else %}
+    <!-- Message for unauthenticated users -->
+    <p>You are not logged in</p> 
 
-  <p>You are not logged in</p> 
-   
-  <ul class="nav-links" style="text-align: center">
-    <li><a href="{% url 'login' %}">Log In</a></li>
-    <li><a href="{% url 'signup' %}">Sign up</a></li>
-    <li><a href="{% url 'password_reset' %}">Password Reset</a></li>
-  </ul>
+    <!-- Navigation links for unauthenticated users -->
+    <ul class="nav-links" style="text-align: center">
+      <li><a href="{% url 'login' %}">Log In</a></li>
+      <li><a href="{% url 'signup' %}">Sign up</a></li>
+      <li><a href="{% url 'password_reset' %}">Password Reset</a></li>
+    </ul>
   {% endif %}
 </div>
-
 {% endblock %}

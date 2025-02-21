@@ -1,108 +1,109 @@
+# Import necessary Django and Python modules
 from django.shortcuts import render, redirect
 import requests
 from .forms import CartForm
 from django.contrib.auth.decorators import login_required
 from apps.api.models import Books, Category
-from apps.accounts.models import CustomUser
-from apps.cart.models import Cart
 
 
-# Create your views here.
-@login_required
+@login_required  # Ensures user must be logged in to access this view
 def fetch_data(request):
+    """
+    View to fetch and display all books categorized by their category.
+    Also handles adding books to cart via POST request.
+    """
+    # Create a list of QuerySets, each containing books filtered by category
+    data_list = [Books.objects.filter(category=c) for c in Category.objects.all()]
 
-    count = 1
-    data_list = []
-    cat = Category.objects.all()
-    for c in cat:
-        book = Books.objects.filter(category=Category(id=count))
-        data_list.append(book)
-        count += 1
-
-    
-    if "id_output" in request.POST:
+    # Handle POST request for adding book to cart
+    if request.method == "POST" and "id_output" in request.POST:
         form = CartForm(request.POST)
-        cart_id = request.POST.get("id_output")
         if form.is_valid():
-            cart_field = form.save(commit=False)
-            cart_field.user_id = CustomUser.objects.get(id=f"{request.user.id}")
-            cart_field.book = Books.objects.get(id=cart_id)
-            cart_field.save()
-            
+            cart_field = form.save(commit=False)  # Create cart object but don't save yet
+            cart_field.user_id = request.user     # Assign current user
+            cart_field.book = Books.objects.get(id=request.POST.get("id_output"))  # Get book by ID
+            cart_field.save()  # Save cart entry to database
     else:
-        form = CartForm()
+        form = CartForm()  # Create empty form for GET requests
 
-    return render(request, 'index.html', {'data_list': data_list, 'cat': cat, 'form': form})
+    # Render template with book data, categories, and cart form
+    return render(request, 'index.html', {'data_list': data_list, 'cat': Category.objects.all(), 'form': form})
+
 
 @login_required
 def book_details(request, book_id):
-
+    """
+    View to display detailed information about a specific book.
+    Fetches book details, author info, and category info from API.
+    Also handles adding book to cart via POST request.
+    """
+    # Construct API URL for specific book
     url = f"http://127.0.0.1:8000/api/books/{book_id}"
 
     try:
+        # Fetch book data from API
         response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
-        books = data
+        response.raise_for_status()  # Raise exception for bad HTTP responses
+        books = response.json()
 
-
-        # Author Allocation
-        author_url = books.get('author')
-        author_response = requests.get(author_url)
+        # Fetch author details from API
+        author_response = requests.get(books.get('author'))
         author_data = author_response.json()
+        # Update books dict with author information
+        books.update({
+            'author_first': author_data.get('first_name'),
+            'author_last': author_data.get('last_name'),
+            'author_pic': author_data.get('profile_picture'),
+            'author_bio': author_data.get('bio')
+        })
 
-        # Data
-        books['author_first'] = author_data.get('first_name')
-        books['author_last'] = author_data.get('last_name')
-        books['author_pic'] = author_data.get('profile_picture')
-        books['author_bio'] = author_data.get('bio')
-
-        # Category Allocation
-        category_url = books.get('category')
-        category_response = requests.get(category_url)
+        # Fetch category details from API
+        category_response = requests.get(books.get('category'))
         cat_data = category_response.json()
-        
-        # Data
         books['category_name'] = cat_data.get('name')
 
-
     except requests.exceptions.RequestException as e:
+        # Handle any API request errors
         print(f"Error fetching data: {e}")
-        books = []  # Fallback to empty list in case of error
+        books = {}
 
+    # Handle POST request for adding book to cart
     if request.method == "POST":
         form = CartForm(request.POST)
         if form.is_valid():
             cart_field = form.save(commit=False)
-            cart_field.user_id = CustomUser.objects.get(id=f"{request.user.id}")
+            cart_field.user_id = request.user
             cart_field.book = Books.objects.get(id=book_id)
             cart_field.save()
-            return redirect('cart')
-
+            return redirect('cart')  # Redirect to cart page after successful addition
     else:
-        form = CartForm()
+        form = CartForm()  # Create empty form for GET requests
 
+    # Render template with book details and cart form
     return render(request, 'book_details.html', {'data': books, 'form': form})
+
 
 @login_required
 def search_books(request):
-    url = f"http://127.0.0.1:8000/api/books"
+    """
+    View to handle book search functionality.
+    Fetches all books from API and filters based on search keyword.
+    """
+    # API endpoint for books
+    url = "http://127.0.0.1:8000/api/books"
 
-     
-    response = requests.get(url)
-    response.raise_for_status()
-    data = response.json()
-    books = data.get('results', [])
-    dict_book = {"matches": []}
+    try:
+        # Fetch all books from API
+        response = requests.get(url)
+        response.raise_for_status()
+        books = response.json().get('results', [])  # Get results or empty list if none
+    except requests.exceptions.RequestException as e:
+        # Handle API request errors
+        print(f"Error fetching data: {e}")
+        books = []
 
-    if request.method == "POST":  
-        keyword = request.POST.get("keyword", "").lower()  # Get user input
-        for book in books:
-            if keyword in book['title'].lower():
-                dict_book["matches"].append(book)
+    # Filter books based on search keyword (only for POST requests)
+    matches = [book for book in books if request.method == "POST" and request.POST.get("keyword", "").lower() in book['title'].lower()]
 
-
-        # Render results page with matching books
-    return render(request, "search.html", {"books": dict_book["matches"]})
-
-
+    # Render template with search results
+    return render(request, "search.html", {"books": matches})
