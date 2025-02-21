@@ -3255,7 +3255,8 @@ Traceback (most recent call last):
                                  ^^^^^^^^^^^^^^^^^^
   File "C:\Users\Jakeu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
     condition = self.build_lookup(lookups, col, value)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                ^^jj
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\Jakeu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\db\models\sql\query.py", line 1385, in build_lookup
     lookup = lookup_class(lhs, rhs)
              ^^^^^^^^^^^^^^^^^^^^^^
