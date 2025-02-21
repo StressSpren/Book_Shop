@@ -52,6 +52,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
+    width: 80%;
 }
 
 /* Inventory Styles */
@@ -63,7 +64,7 @@
     width: 70%;
     margin: 0 auto;
     box-shadow: inset 2px 2px 10px 2px;
-    background: rgb(255, 222, 227);
+    background: #f8dcf5e6;
 }
 
 .imglink:hover {
@@ -76,9 +77,7 @@
 .d-block{
     border-radius: 8px;
 }
-.d-block:hover {
 
-}
 
 /* Homepage Styles */
 .homepage {
@@ -113,13 +112,13 @@
 /* Button Styles */
 button {
     border-radius: 8px;
-    background-color: #ffcccb; /* pastel pink */
+    background-color: #f8dcf5e6; /* pastel pink */
     padding: 5px 15px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #ffb6c1; /* darker pastel pink */
+    background-color: whitesmoke; /* darker pastel pink */
 }
 
 /* Carousel Styles */
@@ -145,6 +144,7 @@ button:hover {
 
 .carousel-control-prev,
 .carousel-control-next {
+    align-items: center;
     width: 30px;
     height: 100%;
     display: none;
@@ -154,7 +154,7 @@ button:hover {
 .carousel:hover .carousel-control-next {
     display: block;
     border-radius: 8px;
-    border: 2px solid black
+    
 }
 
 .carousel-control-prev-icon,
@@ -183,4 +183,107 @@ button:hover {
 .card-body{
     border: none !important;
    
+}
+
+/* HOME PAGE */
+
+.bookspren-logo{
+    width: auto;
+    height: auto;
+    background-color: lightgrey;
+    border: 10px dashed black;
+   
+    
+    
+}
+.logo-img{
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+}
+
+.title-banner{
+    background-color: #f8dcf5e6;
+    height: 100px;
+    text-align: left;
+    align-content: center;
+    padding: 20px;
+    opacity: 0.5;
+    
+    
+}
+.home-item-div{
+    display: flex;
+    gap: 5px;
+    box-shadow: inset 2px 2px 10px 2px; 
+    padding: 10px;
+    overflow:auto;
+}
+
+.search-list{
+    text-decoration: none;
+    
+}
+.search-item a{
+    text-decoration: none;
+    color: black;
+    
+}
+.search-item a:hover{
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 20px;
+    height: 50px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 8px 0;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #f4a261;
+}
+
+.footer-social a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    color: #f4a261;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
 }

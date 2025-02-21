@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
 
@@ -28,9 +29,10 @@ urlpatterns = [
     path("myaccounts/", include("apps.accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
 
-    path("", auth_views.LoginView.as_view(), name = "login"),
+    path("", include("apps.inventory.urls")),
+    path("login/", auth_views.LoginView.as_view(), name = "login"),
     
-    path("home/", TemplateView.as_view(template_name="home.html"), name="home"),
+    
     path("api/", include('apps.api.urls')),
     path('inventory/', include('apps.inventory.urls')),
     path('cart/', include('apps.cart.urls')),

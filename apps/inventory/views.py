@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect
 import requests
 from .forms import CartForm
 from django.contrib.auth.decorators import login_required
-from apps.api.models import Books, Category
-
+from apps.api.models import Books, Category, Author
+from apps.cart.models import Cart
+from apps.accounts.models import CustomUser
 
 @login_required  # Ensures user must be logged in to access this view
 def fetch_data(request):
@@ -107,3 +108,28 @@ def search_books(request):
 
     # Render template with search results
     return render(request, "search.html", {"books": matches})
+
+
+
+
+def home_view(request):
+
+    books = Books.objects.all()
+    categories = Category.objects.all() # Fetch all categories from database
+    authors = Author.objects.all() # Fetch all authors from database
+    cart = Cart.objects.all()
+    
+    
+
+    if request.method == "POST" and "id_output" in request.POST:
+        form = CartForm(request.POST)
+        if form.is_valid():
+            cart_field = form.save(commit=False)  # Create cart object but don't save yet
+            cart_field.user_id = request.user     # Assign current user
+            cart_field.book = Books.objects.get(id=request.POST.get("id_output"))  # Get book by ID
+            cart_field.save()  # Save cart entry to database
+    else:
+        form = CartForm()  # Create empty form for GET requests
+
+
+    return render(request, 'home.html', {'books': books, 'categories': categories, 'authors': authors, 'cart': cart, 'form': form})

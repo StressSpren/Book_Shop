@@ -6,8 +6,88 @@
 <div class="homepage">
   <div class="welcome-section">
     {% if user.is_authenticated %}
-      <h1>Welcome back, {{ user.username }}!</h1>
-      <p>We're glad to see you again.</p>
+ 
+      
+      <div class="bookspren-logo">
+        <img class="logo-img" src="{% static 'images/pic2_edited.png' %}" alt="Bookspren Logo">
+      </div>
+      <hr>
+      <h1>Welcome, {{ user.username.title }}!</h1>
+      <hr>
+
+      <div class="title-banner">
+        <h1>In the Basket</h1>
+      </div>
+      <div class="home-item-div">
+        {% for bk in cart %}
+          {%if request.user.username == bk.user_id.username %}
+            <div class="book-card">
+            <img src="{{ bk.book.cover_image.url }}" alt="{{ bk.book.title }}" style="width: 100px; height: 150px;">
+            <p>{{ bk.book.price }}</p>
+        </div> 
+        {% endif %}  
+        {% endfor %}
+      </div>
+
+      <div class="title-banner">
+        <h1>Almost Gone!</h1>
+      </div>
+      <div class="home-item-div">
+        {% for book in books %}
+          {% if book.stock <= 12 %}
+            <div class="book-card">
+              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" style="width: 100px; height: 150px;">
+              <p>{{ book.price }}</p>
+              <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="id_output" value="{{ book.id }}">
+                <button type="submit" class="button">Add to Basket</button>
+              </form>
+            </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="title-banner">
+        <h1>Sale!</h1>
+      </div>
+      <div class="home-item-div">
+        {% for book in books %}
+          {% if book.stock > 12 %}
+            <div class="book-card">
+              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" style="width: 100px; height: 150px;">
+              <p>{{ book.price }}</p>
+              <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="id_output" value="{{ book.id }}">
+                <button type="submit" class="button">Add to Basket</button>
+              </form>
+            </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+      
+      <div class="title-banner">
+        <h1>Under £10!</h1>
+      </div>
+      <div class="home-item-div">
+      {% for book in books %}
+          {% if book.price <= 10 %}
+            <div class="book-card">
+              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" style="width: 100px; height: 150px;">
+              <p>£{{ book.price }}</p>
+              <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="id_output" value="{{ book.id }}">
+                <button type="submit" class="button">Add to Basket</button>
+              </form>
+            </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+
+      
+
     {% else %}
       <h1>Welcome to Bookspren</h1>
       

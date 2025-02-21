@@ -4,16 +4,17 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-<div class="login-card">
-    <h2>Search Results</h2>
-    <ul>
-        {% for book in books %}
-            <li><a href="{% url 'book_details' book.id %}">{{ book.title }}</a></li>
-        {% empty %}
-            <li>No books found.</li>
-        {% endfor %}
-    </ul>
-</div>    
+<div class="title-banner">
+<h2>Search Results</h2>
+</div>
+<ul class="search-list">
+{% for book in books %}
+    <li class="search-item"><a href="{% url 'book_details' book.id %}">{{ book.title }} - ({{book.published_date}})</a></li>
+{% empty %}
+    <li>No books found.</li>
+{% endfor %}
+</ul>
+   
 
 {% endif %}
 {% endblock %}
