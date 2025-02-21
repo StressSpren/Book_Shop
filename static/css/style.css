@@ -1,57 +1,61 @@
+/* Font Styles */
 .roboto-floboto {
     font-family: "Roboto", serif;
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-  }
+    font-variation-settings: "wdth" 100;
+}
 
 .sassy-frass-regular {
     font-family: "Sassy Frass", serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
+}
 
+/* Navbar Styles */
 .navbar-header {
     font-size: 50px;
 }
-  
 
-
-.navbar-nav{
+.navbar-nav {
     display: grid;
     grid-template-columns: 1fr auto;
-    align-items:flex-end;
+    align-items: flex-end;
     justify-content: end;
     padding: 3px;
     gap: 10px;
     font-size: small;
-    
-
 }
 
-
-.navbar-toggler-icon{
+.navbar-toggler-icon {
     width: 10px;
     height: 10px;
 }
 
 .nav-item {
-
-    font-family:"Roboto";
+    font-family: "Roboto";
 }
+
 .nav-item:hover {
     text-decoration: underline;
 }
 
+/* Login Styles */
 .login-div {
-
     text-align: center;
 }
 
-.inv-div{
+.login-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+/* Inventory Styles */
+.inv-div {
     padding: 10px;
     display: flex;
     gap: 5px;
@@ -60,52 +64,131 @@
     margin: 0 auto;
     box-shadow: inset 2px 2px 10px 2px;
     background: rgb(255, 222, 227);
-    
+}
+
+.imglink:hover {
+    border: 4px dashed black;
+}
+.genre-div{
+    display: flex;
+    grid-template-columns: repeat(1fr 1fr);
+}
+
+.d-block:hover {
+    border: 4px dashed black;
 
 }
 
-
-.imglink:hover{
-    border: 4px dashed white;
-}
-
+/* Homepage Styles */
 .homepage {
     text-align: center;
     padding: 50px;
 }
+
 .welcome-section {
     margin-bottom: 30px;
 }
-.login-card {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-}
+
+/* Navigation Links */
 .nav-links {
     list-style-type: none;
     padding: 0;
 }
+
 .nav-links li {
     display: inline;
     margin: 0 10px;
 }
+
 .nav-links a {
     text-decoration: none;
     color: #007bff;
 }
+
 .nav-links a:hover {
     text-decoration: underline;
 }
+
+/* Button Styles */
 button {
     background-color: #ffcccb; /* pastel pink */
     color: black;
-    border: none;
+    border: 2px dashed black;
     padding: 5px 15px; /* slimline shape */
     border-radius: 8px;
     cursor: pointer;
 }
+
 button:hover {
     background-color: #ffb6c1; /* darker pastel pink */
+}
+
+/* Carousel Styles */
+.carousel {
+    margin-bottom: 30px;
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.carousel-item img {
+    height: 300px; /* reduced from 400px */
+    width: 200px;  /* reduced from 250px */
+    object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 30px;
+    height: 100%;
+    display: none;
+}
+
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+    display: block;
+    border-radius: 8px;
+    border: 2px dashed black
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.carousel-caption {
+    position: static;
+    margin-top: 10px;
+}
+
+/* card Styles */
+
+.card {
+    text-align: center;
+    border: none !important;
+    
+    
+    
+    
+}
+.card-body{
+    border: none !important;
+   
+}
+
+.carousel-inner{
+    box-shadow: inset 2px 2px 10px 2px;
+    padding: 20px;
+    background-color: whitesmoke;
+    
 }
