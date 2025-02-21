@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 import requests
 from .forms import CartForm
 from django.contrib.auth.decorators import login_required
-from apps.api.models import Books
+from apps.api.models import Books, Category
 from apps.accounts.models import CustomUser
 
 
@@ -10,28 +10,15 @@ from apps.accounts.models import CustomUser
 @login_required
 def fetch_data(request):
 
-    url = f"http://127.0.0.1:8000/api/books/"
-    
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
-        books = data.get('results', [])
+    count = 1
+    data_list = []
+    cat = Category.objects.all()
+    for c in cat:
+        book = Books.objects.filter(category=Category(id=count))
+        data_list.append(book)
+        count += 1
 
-        for book in books:
-            author_url = book.get('author')  # Get the URL of the author
-            if author_url:  # If there's a URL, fetch the author's details
-                author_response = requests.get(author_url)
-                if author_response.status_code == 200:
-                    author_data = author_response.json()
-                    book['author_name'] = author_data.get('first_name')
-                    book['author_last'] = author_data.get('last_name')
-
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching data: {e}")
-        books = []  # Fallback to empty list in case of error
-
-    return render(request, 'index.html', {'data': books})
+    return render(request, 'index.html', {'data_list': data_list, 'cat': cat})
 
 @login_required
 def book_details(request, book_id):

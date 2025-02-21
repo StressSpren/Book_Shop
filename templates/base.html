@@ -4,6 +4,9 @@
 
 <head>
   <meta charset="utf-8">
+
+  <!-- Link to the Favicon -->
+    <link rel="icon" href="{% static 'images/pic2_edited.png' %}">
  
   <title>{% block title %}Jbooks{% endblock %}</title>
   
@@ -18,31 +21,52 @@
   <!--Google Fonts-------------------------------->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Sassy+Frass&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <!--Google Fonts End---------------------------->
   <script src="{% static 'js/script.js' %}" defer></script>
   <!--Javascript---------------------------------->
 </head>
 
 <body>
-
-  
+   <!--Navigation Bar ---------------------------------------------------------------->
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"><img src="{%static 'images/pic2_edited.png'%}" style="width: 50px; height: 50px;"></a>
+      <a class="navbar-header sassy-frass-regular" href="{%url 'home' %}" style="text-decoration: none; color: black;">Bookspren</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <form method="POST" action="{% url 'search_books' %}"> 
+              {% csrf_token %}
+              <input type="text" name="keyword" placeholder="Enter book here..." required>
+            </form>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'fetch_data' %}">Books</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Basket</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container-fluid" style="text-align: center; background-color:pink; opacity: 40%;">
+  <p>Now accessible through our API!! Register Now!! </p>
+</div>
 
   <main>
-    <!--Navigation Bar ---------------------------------------------------------------->
-    <nav class="navbar">
-      <div class="logo">
-        <a style= "text-decoration: none; color: #4a4a4a " href="{% url 'home'%}">Jbooks</a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'search_books' %}">Search</a></li>
-        <li><a href="{% url 'fetch_data' %}">Books</a></li>
-        <li><a href="{% url 'cart'%}">Basket</a></li>
-      </ul>
-    </nav>
+   
 
     {% block content %}
+
+
+
+
+
+    
     
     {% endblock %}
   </main>

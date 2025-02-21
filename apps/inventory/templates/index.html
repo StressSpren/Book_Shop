@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title%} Inventory {% endblock %}
+{% block title%} Books {% endblock %}
 
 
 {%block content%}
@@ -8,18 +8,22 @@
 
 
 
-<div class="displaybar_inv">
+{% for d in data_list%}
+  <header>{{d.0.category}}</header>
+  <div class="inv-div">
+    {%for x in d %}
+      <div class="item-div">
+        <a href = "{%url 'book_details' x.id %}">
+        <img src="{{x.cover_image.url}}" style="width:100px; height:150px;">
+        </a>
+      </div>
 
-  {%for data in data %}
-  <!-- FOR loop Displaying the contents from the api/books -->
-  <div class="inv_img">
-    <a href="{% url 'book_details' data.id %}">
-      <img src="{{ data.cover_image }}" style="width: 100px; height: 150px">
-    </a> 
+    {% endfor %}
   </div>
-  {% endfor %} <!-- End loop-->
+{% endfor %}
+    
 
-</div>
+
 
 {% endif %}
 {%endblock%}

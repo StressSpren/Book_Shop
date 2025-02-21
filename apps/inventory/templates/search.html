@@ -1,15 +1,11 @@
 {% extends 'base.html' %}
+{%block title%}Search{%endblock%}
 
 {% block content %}
 {% if user.is_authenticated %}
 
-    <form method="POST" action="{% url 'search_books' %}"> 
-        {% csrf_token %}
-        <input type="text" name="keyword" placeholder="Enter book title" required>
-        <input type="submit" value="Search">
-    </form>
+<div class="login-card">
 
-    
     <h2>Search Results</h2>
     <ul>
         {% for book in books %}
@@ -19,6 +15,6 @@
         {% endfor %}
     </ul>
 
-    
+</div>    
 {% endif %}
 {% endblock %}

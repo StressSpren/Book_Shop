@@ -1,13 +1,10 @@
 {% extends "base.html" %}
-
 {% load static %}
-
 {% block title %}Home{% endblock %}
-
 {% block content %}
 
-<div class= "card" style="height: 400px;">
-{% if user.is_authenticated %}
+<div class="login-card">
+  {% if user.is_authenticated %}
 
   <p>Hi {{ user.username }}!</p>
 
@@ -20,15 +17,16 @@
       <button type="submit">Log Out</button>
   </form>
 
-
   {% else %}
 
-  <p>You are not logged in</p>
+  <p>You are not logged in</p> 
+   
   <ul class="nav-links" style="text-align: center">
     <li><a href="{% url 'login' %}">Log In</a></li>
     <li><a href="{% url 'signup' %}">Sign up</a></li>
     <li><a href="{% url 'password_reset' %}">Password Reset</a></li>
   </ul>
+  {% endif %}
 </div>
-{% endif %}
+
 {% endblock %}
