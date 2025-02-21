@@ -12,6 +12,11 @@
     font-weight: 400;
     font-style: normal;
 }
+/*   BODY AND MAIN STYLES     */
+main{
+    min-height: 700px;
+    max-height: none
+}
 
 /* Navbar Styles */
 .navbar-header {
@@ -134,6 +139,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 10%;
 }
 
 .carousel-item img {
@@ -289,6 +295,3 @@ button:hover {
 }
 
 
-main{
-    min-height: 700px;
-}
