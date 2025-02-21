@@ -13,9 +13,15 @@
   <div class="inv-div">
     {%for x in d %}
       <div class="item-div">
-        <a href = "{%url 'book_details' x.id %}">
-        <img src="{{x.cover_image.url}}" style="width:100px; height:150px;">
+        <a href="{%url 'book_details' x.id %}">
+        <img class="imglink" src="{{x.cover_image.url}}" style="width:100px; height:150px;">
         </a>
+        <p>{{x.price}}</p>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="id_output" value="{{x.id}}">
+          <button type="submit">Add to Basket</button>
+        </form>
       </div>
 
     {% endfor %}

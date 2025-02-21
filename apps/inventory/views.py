@@ -4,6 +4,7 @@ from .forms import CartForm
 from django.contrib.auth.decorators import login_required
 from apps.api.models import Books, Category
 from apps.accounts.models import CustomUser
+from apps.cart.models import Cart
 
 
 # Create your views here.
@@ -18,7 +19,20 @@ def fetch_data(request):
         data_list.append(book)
         count += 1
 
-    return render(request, 'index.html', {'data_list': data_list, 'cat': cat})
+    
+    if "id_output" in request.POST:
+        form = CartForm(request.POST)
+        cart_id = request.POST.get("id_output")
+        if form.is_valid():
+            cart_field = form.save(commit=False)
+            cart_field.user_id = CustomUser.objects.get(id=f"{request.user.id}")
+            cart_field.book = Books.objects.get(id=cart_id)
+            cart_field.save()
+            
+    else:
+        form = CartForm()
+
+    return render(request, 'index.html', {'data_list': data_list, 'cat': cat, 'form': form})
 
 @login_required
 def book_details(request, book_id):
@@ -86,6 +100,7 @@ def search_books(request):
         for book in books:
             if keyword in book['title'].lower():
                 dict_book["matches"].append(book)
+
 
         # Render results page with matching books
     return render(request, "search.html", {"books": dict_book["matches"]})
