@@ -21,8 +21,10 @@
 
 
 .navbar-nav{
-    align-items:baseline;
     display: grid;
+    grid-template-columns: 1fr auto;
+    align-items:flex-end;
+    justify-content: end;
     padding: 3px;
     gap: 10px;
     font-size: small;
@@ -65,4 +67,45 @@
 
 .imglink:hover{
     border: 4px dashed white;
+}
+
+.homepage {
+    text-align: center;
+    padding: 50px;
+}
+.welcome-section {
+    margin-bottom: 30px;
+}
+.login-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+}
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #007bff;
+}
+.nav-links a:hover {
+    text-decoration: underline;
+}
+button {
+    background-color: #ffcccb; /* pastel pink */
+    color: black;
+    border: none;
+    padding: 5px 15px; /* slimline shape */
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #ffb6c1; /* darker pastel pink */
 }
