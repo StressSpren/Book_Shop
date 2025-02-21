@@ -24,6 +24,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Sassy+Frass&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
   <!--Google Fonts End---------------------------->
   <script src="{% static 'js/script.js' %}" defer></script>
   <!--Javascript---------------------------------->
@@ -39,17 +40,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav ms-auto">
-          <div class="nav-item">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
             <form method="POST" action="{% url 'search_books' %}"> 
               {% csrf_token %}
+              
               <input type="text" name="keyword" placeholder="Enter book here..." required>
+              <button type="submit">Go</button>
             </form>
-          </div>
-          <div class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></div>
-          <div class="nav-item"><a class="nav-link" href="{% url 'fetch_data' %}">Books</a></div>
-          <div class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Basket</a></div>
-          </div>
+          </li>
+          <li class="nav-item border-start ps-3"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'fetch_data' %}">Books</a></li>
+          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'cart' %}">Basket</a></li>
+        </ul>
       </div>
     </div>
   </nav>
