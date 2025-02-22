@@ -5,7 +5,7 @@ from .forms import CartForm
 from django.contrib.auth.decorators import login_required
 from apps.api.models import Books, Category, Author
 from apps.cart.models import Cart
-from apps.accounts.models import CustomUser
+
 
 @login_required  # Ensures user must be logged in to access this view
 def fetch_data(request):
@@ -78,7 +78,9 @@ def search_books(request):
     # Filter books based on search keyword (only for POST requests)
     title_matches = [book for book in books if request.method == "POST" and request.POST.get("keyword", "").lower() in book['title'].lower()]
    
-        
+    
+    if request.method == "post" and 'keyword' in request.POST:
+        title_matches = Books.objects.filter(title__icontains=request.POST.get('keyword'))
 
 
         
