@@ -19,6 +19,7 @@
       <div class="title-banner">
         <h1>In the Basket</h1>
       </div>
+      <br><br>
       <div class="home-item-div">
         {% for bk in cart %}
           {%if request.user.username == bk.user_id.username %}
@@ -34,11 +35,12 @@
       <div class="title-banner">
         <h1>Almost Gone!</h1>
       </div>
+      <br><br>
       <div class="home-item-div">
         {% for book in books %}
           {% if book.stock <= 12 %}
             <div class="book-card">
-              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+              <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
               <p>£{{ book.price }}</p>
               <form method="POST">
                 {% csrf_token %}
@@ -53,11 +55,12 @@
       <div class="title-banner">
         <h1>Sale!</h1>
       </div>
+      <br><br>
       <div class="home-item-div">
         {% for book in books %}
           {% if book.stock > 12 %}
             <div class="book-card">
-              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+              <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
               <p>£{{ book.price }}</p>
               <form method="POST">
                 {% csrf_token %}
@@ -72,11 +75,12 @@
       <div class="title-banner">
         <h1>Under £10!</h1>
       </div>
+      <br><br>
       <div class="home-item-div">
       {% for book in books %}
           {% if book.price <= 10 %}
             <div class="book-card">
-              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+              <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
               <p>£{{ book.price }}</p>
               <form method="POST">
                 {% csrf_token %}
@@ -91,7 +95,7 @@
       
 
     {% else %}
-      <h1>Welcome to Bookspren</h1>
+      <h1 class="sassy-frass-regular" style="font-size: 100px;">Welcome to Bookspren</h1>
       
     {% endif %}
   </div>
@@ -109,8 +113,6 @@
         <button class="button" type="submit">Log Out</button>
       </form>
     {% else %}
-      <!-- Message for unauthenticated users -->
-      <p>You are not logged in</p> 
 
       <!-- Navigation links for unauthenticated users -->
       <ul class="nav-links" style="text-align: center">

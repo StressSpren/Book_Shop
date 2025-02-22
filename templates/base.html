@@ -24,12 +24,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <!-- JavaScript -->
-  <script src="{% static 'js/script.js' %}" defer></script>
+  <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 
 <body>
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <!-- Brand Logo -->
       <a class="navbar-brand" href="{% url 'home' %}">
@@ -44,6 +44,10 @@
       <!-- Navbar Links -->
       <div class="collapse navbar-collapse ms-auto" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+          
+          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'fetch_data' %}">Books</a></li>
+          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'cart' %}">Basket</a></li>
           <li class="nav-item">
             <!-- Search Form -->
             <form method="POST" action="{% url 'search_books' %}"> 
@@ -52,9 +56,6 @@
               <button type="submit">Go</button>
             </form>
           </li>
-          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'fetch_data' %}">Books</a></li>
-          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'cart' %}">Basket</a></li>
           {%if user.is_authenticated %}
           <li class="nav-item border-start ps-3">
             <form action="{% url 'logout' %}" method="post">
