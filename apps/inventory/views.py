@@ -58,32 +58,9 @@ def book_details(request, book_id):
 
 @login_required
 def search_books(request):
-    """
-    View to handle book search functionality.
-    Fetches all books from API and filters based on search keyword.
-    """
-    # API endpoint for books
-    url = "https://bookshop-2ucx.onrender.com/api/books"
 
-    try:
-        # Fetch all books from API
-        response = requests.get(url)
-        response.raise_for_status()
-        books = response.json().get('results', [])  # Get results or empty list if none
-    except requests.exceptions.RequestException as e:
-        # Handle API request errors
-        print(f"Error fetching data: {e}")
-        books = []
-
-    # Filter books based on search keyword (only for POST requests)
-    title_matches = [book for book in books if request.method == "POST" and request.POST.get("keyword", "").lower() in book['title'].lower()]
-   
-    
     if request.method == "post" and 'keyword' in request.POST:
         title_matches = Books.objects.filter(title__icontains=request.POST.get('keyword'))
-
-
-        
 
     # Render template with search results
     return render(request, "search.html", {"book_title": title_matches})
