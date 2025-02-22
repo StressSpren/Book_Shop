@@ -2,22 +2,28 @@
 {% block title %}Login{% endblock %}
 {% block content %}
 
-<div class="container fluid">
-  <div class="login-div">
-    <h2>Log In</h2>
+<div class="login-div">
+  <div class="login-card">
+  
+    <h2 class="sassy-frass-regular" style="font-size: 100px">Log In</h2>
     <form method="post">
       {% csrf_token %}
-      <label for="username">Username: </label>
-      <input type="text" id="username" name="username" required></input>
+      
+      <input type="text" id="username" name="username" placeholder="Username" required></input>
 
       <br><br>
       
-      <label for="password">Password:  </label>
-      <input type="password" id="password" name="password" required></input>
+      
+      <input type="password" id="password" name="password" placeholder="Password" required></input>
       <hr>
       <button type="submit">Log In</button>
     </form>
-    <a class="nav-link" href="{%url 'signup'%}">Signup</a>
+    <br>
+    <div class="login-options">
+      <p>Don't have an account?</p>
+      <button class="button"><a class="nav-link" href="{%url 'signup'%}">Signup</a></button>
+      <button class="button"><a class="nav-link" href="{%url 'password_reset'%}">Forgot Password</a></button>
+    
   </div>
 </div>
 {% endblock %}
