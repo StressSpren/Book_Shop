@@ -40,7 +40,7 @@ def book_details(request, book_id):
     Also handles adding book to cart via POST request.
     """
     # Construct API URL for specific book
-    url = f"http://127.0.0.1:8000/api/books/{book_id}"
+    url = f"https://bookshop-2ucx.onrender.com/api/books/{book_id}"
 
     try:
         # Fetch book data from API
@@ -92,7 +92,7 @@ def search_books(request):
     Fetches all books from API and filters based on search keyword.
     """
     # API endpoint for books
-    url = "http://127.0.0.1:8000/api/books"
+    url = "https://bookshop-2ucx.onrender.com/api/books"
 
     try:
         # Fetch all books from API
