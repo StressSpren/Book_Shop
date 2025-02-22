@@ -54,7 +54,7 @@ import requests
 import requests
 from requests.auth import HTTPBasicAuth
 
-url = f"http://127.0.0.1:8000/api/books/"
+url = f"https://bookshop-2ucx.onrender.com/api/books/"
 
 username="admin"
 password ="admin"
