@@ -15,7 +15,7 @@
     <div class="row">
         <!-- Book Cover Image -->
         <div class="col-md-4 text-center">
-            <img src="{{ data.cover_image }}"style="max-width: 300px" class="img-fluid rounded shadow" alt="{{ data.title }} Cover">
+            <img src="{{ data.cover_image.url }}"style="max-width: 300px" class="img-fluid rounded shadow" alt="{{ data.title }} Cover">
         </div>
 
         <!-- Book Description & Actions -->
@@ -38,13 +38,13 @@
         <div class="row g-3">
             <!-- Author Image -->
             <div class="col-md-2 text-center">
-                <img src="{{ data.author_pic }}" class="rounded-circle img-fluid" style="width: 120px; height: 120px;" alt="{{ data.author_first }} {{ data.author_last }}">
+                <img src="{{ author.profile_picture.url }}" class="rounded-circle img-fluid" style="width: 120px; height: 120px;" alt="{{ data.author_first }} {{ data.author_last }}">
             </div>
 
             <!-- Author Bio -->
             <div class="col-md-10">
-                <h4 class="fw-bold">{{ data.author_first }} {{ data.author_last }}</h4>
-                <p class="text-muted">{{ data.author_bio }}</p>
+                <h4 class="fw-bold">{{ author.first_name }} {{ author.last_name }}</h4>
+                <p class="text-muted">{{ author.bio }}</p>
             </div>
         </div>
     </div>

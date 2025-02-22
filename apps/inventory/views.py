@@ -34,40 +34,11 @@ def fetch_data(request):
 
 @login_required
 def book_details(request, book_id):
-    """
-    View to display detailed information about a specific book.
-    Fetches book details, author info, and category info from API.
-    Also handles adding book to cart via POST request.
-    """
-    # Construct API URL for specific book
-    url = f"https://bookshop-2ucx.onrender.com/api/books/{book_id}"
+  
+    books = Books.objects.get(id=book_id)  # Fetch book by ID
 
-    try:
-        # Fetch book data from API
-        response = requests.get(url)
-        response.raise_for_status()  # Raise exception for bad HTTP responses
-        books = response.json()
-
-        # Fetch author details from API
-        author_response = requests.get(books.get('author'))
-        author_data = author_response.json()
-        # Update books dict with author information
-        books.update({
-            'author_first': author_data.get('first_name'),
-            'author_last': author_data.get('last_name'),
-            'author_pic': author_data.get('profile_picture'),
-            'author_bio': author_data.get('bio')
-        })
-
-        # Fetch category details from API
-        category_response = requests.get(books.get('category'))
-        cat_data = category_response.json()
-        books['category_name'] = cat_data.get('name')
-
-    except requests.exceptions.RequestException as e:
-        # Handle any API request errors
-        print(f"Error fetching data: {e}")
-        books = {}
+    base_author = books.author.id  # Get author ID from book data
+    author = Author.objects.get(id=base_author)
 
     # Handle POST request for adding book to cart
     if request.method == "POST":
@@ -82,7 +53,7 @@ def book_details(request, book_id):
         form = CartForm()  # Create empty form for GET requests
 
     # Render template with book details and cart form
-    return render(request, 'book_details.html', {'data': books, 'form': form})
+    return render(request, 'book_details.html', {'data': books, 'form': form, 'author': author})
 
 
 @login_required
