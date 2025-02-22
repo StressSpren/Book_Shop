@@ -59,11 +59,17 @@ def book_details(request, book_id):
 @login_required
 def search_books(request):
 
-    if request.method == "post" and 'keyword' in request.POST:
-        title_matches = Books.objects.filter(title__icontains=request.POST.get('keyword'))
+    books = Books.objects.all()  # Fetch all books from database
+    book_list = []
+
+    if request.method == "POST" and 'keyword' in request.POST:
+        keyword = request.POST.get('keyword')
+        for book in books:
+            if keyword.lower() in book.title.lower():
+                book_list.append(book)
 
     # Render template with search results
-    return render(request, "search.html", {"book_title": title_matches})
+    return render(request, "search.html", {"book_title": book_list})
 
 
 
