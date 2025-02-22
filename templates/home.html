@@ -24,7 +24,7 @@
         {% for bk in cart %}
           {%if request.user.username == bk.user_id.username %}
             <div class="book-card">
-            <img src="{{ bk.book.cover_image.url }}" alt="{{ bk.book.title }}">
+            <a href="{%url 'book_details' bk.book.id%}"> <img src="{{ bk.book.cover_image.url }}" alt="{{ bk.book.title }}"> </a>
             <p>£{{ bk.book.price }}</p>
         </div> 
         {% endif %}  
