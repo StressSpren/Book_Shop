@@ -55,6 +55,14 @@
           <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
           <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'fetch_data' %}">Books</a></li>
           <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'cart' %}">Basket</a></li>
+          {%if user.is_authenticated %}
+          <li class="nav-item border-start ps-3">
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class="button" type="submit">Log Out</button>
+            </form>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
