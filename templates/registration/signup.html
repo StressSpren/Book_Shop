@@ -8,23 +8,29 @@
 {% block content %}
 <div class="login-div">
 <div class="login-card">
-    <h2 class="card-title sassy-frass-regular">Sign Up</h2>
+    <h2 class="card-title sassy-frass-regular">Sign Up</h2><hr>
     
       <form method="post">
         {% csrf_token %}
         <input type="text" name="username" placeholder="Username" required>
+        <br><br>
         <input type="email" name="email" placeholder="Email" required>
+        <br><br>
         <input type="password" name="password1" placeholder="Password" required>
+        <br><br>
         <input type="password" name="password2" placeholder="Confirm Password" required>
-        <button type="submit">Sign Up</button>
-      </form>
-
-      {%if form.errors.username %}
+        <hr><br>
+        {%if form.errors.username %}
       <p>Your username is already taken</p>
       {% endif %}
       {%if form.errors.password1 or form.errors.password2%}
       <p>The passwords either did not match or are not complex enough.</p>
       {% endif %}
+      <br>
+        <button type="submit">Sign Up</button>
+      </form>
+
+      
     </div>
 </div>
 {% endblock %}

@@ -45,12 +45,9 @@ h1{
     height: 10px;
 }
 
-.nav-item {
-    font-family: "Roboto";
-}
 
-.nav-item:hover {
-    text-decoration: underline;
+.nav-item a:hover {
+    color: #f4a261;
 }
 
 /* Login Styles */
@@ -67,6 +64,7 @@ h1{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
     width: 80%;
+    border: 4px solid #f8dcf5e6;
     
 }
 
@@ -118,11 +116,11 @@ h1{
 
 .nav-links a {
     text-decoration: none;
-    color: #007bff;
+    color: black;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+    color: #f4a261;
 }
 
 /* Button Styles */
@@ -131,6 +129,7 @@ button {
     padding: 5px 15px;
     cursor: pointer;
 }
+
 
 button:hover {
     background-color: whitesmoke; /* darker pastel pink */
@@ -351,5 +350,6 @@ button:hover {
     width: 40%;
     margin: 0 auto;
     text-align: justify;
+    
 
 }

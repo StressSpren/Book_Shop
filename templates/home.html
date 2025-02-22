@@ -99,13 +99,13 @@
     {% if user.is_authenticated %}
       <!-- Navigation links for authenticated users -->
       <ul class="nav-links">
-        <li><a href="{% url 'password_change' %}">Password Change</a></li>
+        <li class="nav-item"><a href="{% url 'password_change' %}">Password Change</a></li>
       </ul>
 
       <!-- Logout form -->
       <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <button type="submit">Log Out</button>
+        <button class="button" type="submit">Log Out</button>
       </form>
     {% else %}
       <!-- Message for unauthenticated users -->
