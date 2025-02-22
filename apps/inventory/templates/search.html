@@ -7,7 +7,7 @@
 <div class="title-banner">
 <h2>Search Results</h2>
 </div>
-<ul class="search-list">
+<ul class="search-list"><br>
 {% for book in books %}
     <li class="search-item"><a href="{% url 'book_details' book.id %}">{{ book.title }} - ({{book.published_date}})</a></li>
 {% empty %}
