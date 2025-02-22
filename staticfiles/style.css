@@ -1,0 +1,358 @@
+/* Font Styles */
+.roboto-floboto {
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.sassy-frass-regular {
+    font-family: "Sassy Frass", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+}
+/*   BODY AND MAIN STYLES     */
+main{
+    min-height: 700px;
+    max-height: none
+}
+h1{
+
+    font-size: 10px;
+    
+    
+}
+
+/* Navbar Styles */
+.navbar-header {
+    font-size: 50px;
+}
+
+.navbar-nav {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: flex-end;
+    justify-content: end;
+    padding: 3px;
+    gap: 10px;
+    font-size: small;
+}
+
+.navbar-toggler-icon {
+    width: 10px;
+    height: 10px;
+}
+
+
+.nav-item a:hover {
+    color: #f4a261;
+}
+
+/* Login Styles */
+.login-div {
+    text-align: center;
+    max-height: inherit;
+    align-items: center;
+}
+
+.login-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 30%;
+    
+
+    min-width: 400px;
+    border: 4px solid #f8dcf5e6;
+    
+}
+
+/* Inventory Styles */
+.inv-div {
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    overflow: auto;
+    width: 70%;
+    margin: 0 auto;
+    box-shadow: inset 2px 2px 10px 2px;
+    background: #f8dcf5e6;
+}
+
+.imglink:hover {
+    border: 4px dashed black;
+}
+.genre-div{
+    display: flex;
+    grid-template-columns: repeat(1fr 1fr);
+}
+.d-block{
+    border-radius: 8px;
+}
+
+
+/* Homepage Styles */
+.homepage {
+    text-align: center;
+    padding: 50px;
+}
+
+.welcome-section {
+    margin-bottom: 30px;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+    
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-links a:hover {
+    color: #f4a261;
+}
+
+/* Button Styles */
+button {
+    background-color: #f8dcf5e6; /* pastel pink */
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: whitesmoke; /* darker pastel pink */
+}
+
+/* Carousel Styles */
+.carousel {
+    margin-bottom: 30px;
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 10%;
+}
+
+.carousel-item img {
+    height: 300px; /* reduced from 400px */
+    width: 200px;  /* reduced from 250px */
+    object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    align-items: center;
+    width: 30px;
+    height: 100%;
+    display: none;
+}
+
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+    display: block;
+    border-radius: 8px;
+    
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.carousel-caption {
+    position: static;
+    margin-top: 10px;
+}
+
+/* card Styles */
+
+.card {
+    text-align: center;
+    border: none !important;
+    
+    
+    
+    
+}
+.card-body{
+    border: none !important;
+   
+}
+
+/* HOME PAGE */
+
+.bookspren-logo{
+    width: auto;
+    height: auto;
+    background-color: lightgrey;
+    border: 10px dashed black;
+   
+    
+    
+}
+.logo-img{
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+}
+
+.title-banner{
+    background-color: #f8dcf5e6;
+    height: 100px;
+    text-align: left;
+    align-content: center;
+    padding: 20px;
+    opacity: 0.5;
+    border-radius: 10px;
+    
+    
+}
+.home-item-div{
+
+    display: flex;
+    overflow: auto;
+    gap: 5px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 4px solid #f8dcf5e6;
+    background-color: whitesmoke;
+
+    width: 90%;
+    height: 10%;
+    margin: 0 auto;
+
+    
+}
+.book-card {
+    width: 100%;
+    height: fit-content;
+    
+    border-radius: 8px;
+    padding: 4px;
+    
+    max-height: fit-content;
+    min-height: 100px;
+    min-width: 150px;
+    max-width: 150px;
+
+}
+.book-card img {
+    border-radius: 8px;
+    width: 100%;
+    height: 50%;
+    max-height: fit-content;
+    min-height: 230px;
+}
+.book-card img:hover {
+    opacity: 50%;
+}
+.home-button{
+
+    max-height: 50px;
+    font-size: xx-small;
+    
+}
+
+
+.search-list{
+    text-decoration: none;
+    
+}
+.search-item a{
+    text-decoration: none;
+    color: black;
+    
+}
+.search-item a:hover{
+    color: #f4a261;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 20px;
+    height: 50px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 8px 0;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #f4a261;
+}
+
+.footer-social a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    color: #f4a261;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* SIGNUP DIV*/
+
+.signup-card{
+    width: 40%;
+    margin: 0 auto;
+    text-align: justify;
+    
+
+}
