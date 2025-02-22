@@ -105,10 +105,15 @@ def search_books(request):
         books = []
 
     # Filter books based on search keyword (only for POST requests)
-    matches = [book for book in books if request.method == "POST" and request.POST.get("keyword", "").lower() in book['title'].lower()]
+    title_matches = [book for book in books if request.method == "POST" and request.POST.get("keyword", "").lower() in book['title'].lower()]
+   
+        
+
+
+        
 
     # Render template with search results
-    return render(request, "search.html", {"books": matches})
+    return render(request, "search.html", {"book_title": title_matches})
 
 
 
