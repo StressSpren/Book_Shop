@@ -90,7 +90,7 @@ def home_view(request):
             cart_field.user_id = request.user     # Assign current user
             cart_field.book = Books.objects.get(id=request.POST.get("id_output"))  # Get book by ID
             cart_field.save()  # Save cart entry to database
-            return redirect('cart')
+            return redirect('home')
     else:
         form = CartForm()  # Create empty form for GET requests
 
