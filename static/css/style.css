@@ -16,8 +16,8 @@
 /*   BODY AND MAIN STYLES     */
 main {
     
-    min-height: 100vh;  /* At least the full viewport height */
-    
+    min-height: 100vh;
+
   }
         
 
@@ -66,7 +66,7 @@ h1{
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
-    width: 60%;
+    width: 80%;
     text-align: center;
     
     
