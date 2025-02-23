@@ -8,6 +8,7 @@
     <tr>
     <th>Book</th>
     <th>Price</th>
+    <th>Stock</th>
     <th>
         <form method="POST">
             {% csrf_token %}
@@ -24,6 +25,7 @@
             
                 <td>{{bk.book.title}}</td>
                 <td>£{{bk.book.price}}</td>
+                <td>{{bk.book.stock}}</td>
                 <td>
                     <form method="POST">
                         {% csrf_token %}
@@ -37,7 +39,18 @@
         {% endif %}  
          
     {% endfor %}
-    <td><p>Total Price: £{{total_price}}</p></td> 
+    <tr>
+        
+        <td><p>Total Price: £{{total_price}}</p></td> 
+        <td>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="checkout" value="true">
+                <button type="submit">Checkout</button>
+            </form>
+        </td>
+        
+    </tr>
 </table>
 
 

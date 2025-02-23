@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{% load static %}
+
+{% block title %}Checkout{%endblock%}
+
+{% block content %}
+
+<div class="login-div">
+    <div class="login-card">
+        <h2 class="sassy-frass-regular" style="font-size: 100px">Checkout</h2>
+        <hr>
+        <p>Thank you, your ordered has been completed!</p>
+        <button class="button"><a style="text-decoration: none; color: black;"href="{%url 'home' %}">Home</a></button>
+
+    </div>
+</div>
+
+
+{% endblock %}
