@@ -15,8 +15,12 @@
 }
 /*   BODY AND MAIN STYLES     */
 main{
-    min-height: 100%;
-    max-height: none
+    @media screen{
+        height: 100%;
+        width: 100%;
+
+    } 
+        
 }
 h1{
 
