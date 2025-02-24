@@ -17,9 +17,7 @@
       <div class="title-banner">
         <h1>In the Basket</h1>
         <h6 class="nav-item"><a class="nav-link" href="{% url 'cart' %}">View Basket</a></h6>
-        
       </div>
-      
       <br>
       <div class="home-item-div">
         {% for bk in cart %}
@@ -43,8 +41,11 @@
           {% if book.stock <= 12 %}
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
+              <hr>
               <p>£{{ book.price }}</p>
+              <hr>
               <p>Stock: {{book.stock}}</p>
+              <hr>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
@@ -67,8 +68,11 @@
           {% if book.stock > 50 %}
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
+              <hr>
               <p>£{{ book.price }}</p>
+              <hr>
               <p>Stock: {{book.stock}}</p>
+              <hr>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
@@ -91,8 +95,11 @@
           {% if book.price <= 10 %}
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
+              <hr>
               <p>£{{ book.price }}</p>
+              <hr>
               <p>Stock: {{book.stock}}</p>
+              <hr>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
@@ -114,8 +121,11 @@
           {% if book.stock == 0 %}
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
+              <hr>
               <p>£{{ book.price }}</p>
+              <hr>
               <p>Stock: {{book.stock}}</p>
+              <hr>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
