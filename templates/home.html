@@ -25,7 +25,6 @@
             <div class="book-card">
             <a href="{%url 'book_details' bk.book.id%}"> <img src="{{ bk.book.cover_image.url }}" alt="{{ bk.book.title }}"> </a>
             <p>£{{ bk.book.price }}</p>
-            <p>Stock: {{ bk.book.stock }}</p>
         </div> 
         {% endif %}  
         {% endfor %}
@@ -43,7 +42,6 @@
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
               <p>£{{ book.price }}</p>
-              <p>Stock: {{ book.stock }}</p>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
