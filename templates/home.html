@@ -13,7 +13,7 @@
       <h1 class="sassy-frass-regular">Welcome, {{ user.username.title }}!</h1>
       <hr>
       
-
+      <!-- In the Basket section -->
       <div class="title-banner">
         <h1>In the Basket</h1>
         <a style="text-decoration: none; color: black;" href="{% url 'cart' %}">View Basket</a>
@@ -31,6 +31,7 @@
       </div>
       <hr>
 
+      <!-- Almost Gone section -->
       <div class="title-banner">
         <h1>Almost Gone!</h1>
       </div>
@@ -51,6 +52,8 @@
         {% endfor %}
       </div>
       <hr>
+
+      <!-- Sale section -->
       <div class="title-banner">
         <h1>Sale!</h1>
       </div>
@@ -71,6 +74,8 @@
         {% endfor %}
       </div>
       <hr>
+
+      <!-- Under £10 section -->
       <div class="title-banner">
         <h1>Under £10!</h1>
       </div>
@@ -92,7 +97,6 @@
       </div>
       <hr>
       
-
     {% else %}
       <h1 class="sassy-frass-regular" style="font-size: 100px;">Welcome to Bookspren</h1>
       
