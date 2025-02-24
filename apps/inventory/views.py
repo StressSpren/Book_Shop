@@ -5,6 +5,7 @@ from .forms import CartForm
 from django.contrib.auth.decorators import login_required
 from apps.api.models import Books, Category, Author
 from apps.cart.models import Cart
+from apps.accounts.models import CustomUser as User
 
 
 @login_required  # Ensures user must be logged in to access this view
@@ -27,6 +28,8 @@ def fetch_data(request):
             cart_field.save()  # Save cart entry to database
 
              # Decrease the stock count
+            if book.stock == 0:
+                return redirect('fetch_data')
             book.stock -= 1
             book.save()
             return redirect('cart')  # Redirect to cart page after successful addition
@@ -98,17 +101,18 @@ def home_view(request):
         form = CartForm(request.POST)
         if form.is_valid():
             book = Books.objects.get(id=request.POST.get("id_output"))
+            user = User.objects.get(id=request.user.id)
             if book.stock == 0:
                 return redirect('home')
             cart_field = form.save(commit=False)  # Create cart object but don't save yet
-            cart_field.user_id = request.user     # Assign current user
+            cart_field.user_id = user     # Assign current user
             cart_field.book = Books.objects.get(id=request.POST.get("id_output"))  # Get book by ID
             cart_field.save()  # Save cart entry to database
 
              # Decrease the stock count
             book.stock -= 1
             book.save()
-            return redirect('home')
+            return redirect(request.META.get('HTTP_REFERER', 'home'))
     else:
         form = CartForm()  # Create empty form for GET requests
 

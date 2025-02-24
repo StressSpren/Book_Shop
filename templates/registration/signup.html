@@ -17,14 +17,14 @@
         <input type="email" name="email" placeholder="Email" required>
         <br><br>
         <input type="password" name="password1" placeholder="Password" required>
-        <br><br>
+          <p>Password must be at least 8 characters long and contain at least two numbers and one special character</p>
         <input type="password" name="password2" placeholder="Confirm Password" required>
         <hr><br>
         {%if form.errors.username %}
       <p>Your username is already taken</p>
       {% endif %}
       {%if form.errors.password1 or form.errors.password2%}
-      <p>The passwords either did not match or are not complex enough.</p>
+      <p>The passwords either did not match or is not complex enough... e.g. (Password123???)</p>
       {% endif %}
       <br>
         <button type="submit">Sign Up</button>

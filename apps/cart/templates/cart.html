@@ -25,7 +25,6 @@
             
                 <td>{{bk.book.title}}</td>
                 <td>£{{bk.book.price}}</td>
-                <td>{{bk.book.stock}}</td>
                 <td>
                     <form method="POST">
                         {% csrf_token %}
@@ -42,6 +41,8 @@
     <tr>
         
         <td><p>Total Price: £{{total_price}}</p></td> 
+        
+        {%if cart %}
         <td>
             <form method="POST">
                 {% csrf_token %}
@@ -49,7 +50,7 @@
                 <button type="submit">Checkout</button>
             </form>
         </td>
-        
+       {%endif%}
     </tr>
 </table>
 

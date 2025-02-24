@@ -16,15 +16,15 @@
       <!-- In the Basket section -->
       <div class="title-banner">
         <h1>In the Basket</h1>
-        <a style="text-decoration: none; color: black;" href="{% url 'cart' %}">View Basket</a>
+        <a class="nav-link" href="{% url 'cart' %}">View Basket</a>
       </div>
-      <br><br>
+      
+      <br>
       <div class="home-item-div">
         {% for bk in cart %}
           {%if request.user.username == bk.user_id.username %}
             <div class="book-card">
             <a href="{%url 'book_details' bk.book.id%}"> <img src="{{ bk.book.cover_image.url }}" alt="{{ bk.book.title }}"> </a>
-            <p>£{{ bk.book.price }}</p>
         </div> 
         {% endif %}  
         {% endfor %}
@@ -35,20 +35,23 @@
       <div class="title-banner">
         <h1>Almost Gone!</h1>
       </div>
-      <br><br>
+      <br>
       <div class="home-item-div">
         {% for book in books %}
+         {%if book.stock != 0 %}
           {% if book.stock <= 12 %}
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
               <p>£{{ book.price }}</p>
+              <p>Stock: {{book.stock}}</p>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
                 <button type="submit" class="home-button">Add to Basket</button>
               </form>
             </div>
-            {% endif %}
+          {% endif %}
+          {% endif %}
         {% endfor %}
       </div>
       <hr>
@@ -57,13 +60,14 @@
       <div class="title-banner">
         <h1>Sale!</h1>
       </div>
-      <br><br>
+      <br>
       <div class="home-item-div">
         {% for book in books %}
-          {% if book.stock > 12 %}
+          {% if book.stock > 50 %}
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
               <p>£{{ book.price }}</p>
+              <p>Stock: {{book.stock}}</p>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
@@ -79,13 +83,38 @@
       <div class="title-banner">
         <h1>Under £10!</h1>
       </div>
-      <br><br>
+      <br>
       <div class="home-item-div">
       {% for book in books %}
+        {%if book.stock != 0 %}
           {% if book.price <= 10 %}
             <div class="book-card">
               <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
               <p>£{{ book.price }}</p>
+              <p>Stock: {{book.stock}}</p>
+              <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="id_output" value="{{ book.id }}">
+                <button type="submit" class="home-button">Add to Basket</button>
+              </form>
+            </div>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+      </div>
+      <hr>
+      <!-- Out of Stock section -->
+      <div class="title-banner">
+        <h1>Out of Stock but coming back soon!</h1>
+      </div>
+      <br>
+      <div class="home-item-div">
+      {% for book in books %}
+          {% if book.stock == 0 %}
+            <div class="book-card">
+              <a href="{% url 'book_details' book.id %}"><img src="{{ book.cover_image.url }}" alt="{{ book.title }}"></a>
+              <p>£{{ book.price }}</p>
+              <p>Stock: {{book.stock}}</p>
               <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">

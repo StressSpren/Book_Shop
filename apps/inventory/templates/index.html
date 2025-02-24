@@ -20,6 +20,7 @@
                     </a>
                     <p>{{ x.title }}</p>
                     <p>£{{ x.price }}</p>
+                    <p>Stock: {{ x.stock }}</p>
                     <form method="POST">
                       {% csrf_token %}
                       <input type="hidden" name="id_output" value="{{ x.id }}">
