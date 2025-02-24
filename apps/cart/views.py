@@ -16,10 +16,13 @@ def cart(request):
     total_price = sum(item.book.price for item in cart_items)
 
     if request.method == "POST":
-        form = Cart_Deletion_Form(request.POST)
-
         # Handle deletion of all cart items
         if "delete_cart" in request.POST:
+            for item in cart_items:
+                if item.book.stock is not None:
+                    item.book.stock += 1
+                    item.book.save()
+
             cart_items.delete()
             return redirect('cart')
 
@@ -28,19 +31,12 @@ def cart(request):
             cart_id = request.POST.get("cart_id")
             if cart_id:
                 item = get_object_or_404(Cart, id=cart_id)
+                item.book.stock += 1
+                item.book.save()
                 item.delete()
-                return redirect('cart')
+            return redirect('cart')
+        
         if "checkout" in request.POST:
-
-            # Update the stock of each book in the cart
-            books = Books.objects.all()
-            for item in cart_items:
-                book = get_object_or_404(books, id=item.book.id)
-                if book.stock <= 1:
-                    return redirect('cart')
-                else:
-                    book.stock -= 1
-                    book.save()
 
             # Handle deletion of all cart items
             items = Cart.objects.filter(user_id=request.user)

@@ -19,11 +19,16 @@ def fetch_data(request):
     # Handle POST request for adding book to cart
     if request.method == "POST" and "id_output" in request.POST:
         form = CartForm(request.POST)
+        book = Books.objects.get(id=request.POST.get("id_output"))
         if form.is_valid():
             cart_field = form.save(commit=False)  # Create cart object but don't save yet
             cart_field.user_id = request.user     # Assign current user
             cart_field.book = Books.objects.get(id=request.POST.get("id_output"))  # Get book by ID
             cart_field.save()  # Save cart entry to database
+
+             # Decrease the stock count
+            book.stock -= 1
+            book.save()
             return redirect('cart')  # Redirect to cart page after successful addition
     else:
         form = CartForm()  # Create empty form for GET requests
@@ -48,6 +53,11 @@ def book_details(request, book_id):
             cart_field.user_id = request.user
             cart_field.book = Books.objects.get(id=book_id)
             cart_field.save()
+
+             # Decrease the stock count
+            books.stock -= 1
+            books.save()
+
             return redirect('cart')  # Redirect to cart page after successful addition
     else:
         form = CartForm()  # Create empty form for GET requests
@@ -80,16 +90,24 @@ def home_view(request):
     categories = Category.objects.all() # Fetch all categories from database
     authors = Author.objects.all() # Fetch all authors from database
     cart = Cart.objects.all()
+
     
     
 
     if request.method == "POST" and "id_output" in request.POST:
         form = CartForm(request.POST)
         if form.is_valid():
+            book = Books.objects.get(id=request.POST.get("id_output"))
+            if book.stock == 0:
+                return redirect('home')
             cart_field = form.save(commit=False)  # Create cart object but don't save yet
             cart_field.user_id = request.user     # Assign current user
             cart_field.book = Books.objects.get(id=request.POST.get("id_output"))  # Get book by ID
             cart_field.save()  # Save cart entry to database
+
+             # Decrease the stock count
+            book.stock -= 1
+            book.save()
             return redirect('home')
     else:
         form = CartForm()  # Create empty form for GET requests
