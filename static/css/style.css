@@ -145,56 +145,6 @@ button:hover {
     background-color: whitesmoke; /* darker pastel pink */
 }
 
-/* Carousel Styles */
-.carousel {
-    margin-bottom: 30px;
-    width: 300px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.carousel-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 10%;
-}
-
-.carousel-item img {
-    height: 300px; /* reduced from 400px */
-    width: 200px;  /* reduced from 250px */
-    object-fit: cover;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    align-items: center;
-    width: 30px;
-    height: 100%;
-    display: none;
-}
-
-.carousel:hover .carousel-control-prev,
-.carousel:hover .carousel-control-next {
-    display: block;
-    border-radius: 8px;
-    
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: black;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-}
-
-.carousel-caption {
-    position: static;
-    margin-top: 10px;
-}
-
 /* card Styles */
 
 .card {
@@ -297,6 +247,29 @@ button:hover {
 .search-item a:hover{
     color: #f4a261;
 }
+
+
+/*                        Index Page */
+
+
+.catergory-div{
+    display: flex;
+    margin: 10px;
+    border:2px solid #f8dcf5e6;
+    padding: 10px;
+    gap: 5px;
+}
+
+.category-card:hover{   
+    opacity: 50%;
+
+}
+
+
+
+
+
+
 
 /* Footer Styles */
 .footer {

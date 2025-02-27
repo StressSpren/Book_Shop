@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Books{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    {% for d in data_list %}
+      <header class="display-6 m-4">{{ d.0.category }}</header>
+      <div class="catergory-div">
+        {% for x in d %}
+          <div class="category-card">
+            <a href="{% url 'book_details' x.id %}">
+              <img src="{{ x.cover_image.url }}" style="height: 150px; width: 100px" class="d-block mx-auto" alt="{{ x.title }}">
+            </a>
+            
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

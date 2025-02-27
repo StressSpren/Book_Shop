@@ -9,7 +9,7 @@ from apps.accounts.models import CustomUser as User
 
 
 @login_required  # Ensures user must be logged in to access this view
-def fetch_data(request):
+def genres(request):
     """
     View to fetch and display all books categorized by their category.
     Also handles adding books to cart via POST request.
@@ -37,15 +37,15 @@ def fetch_data(request):
         form = CartForm()  # Create empty form for GET requests
 
     # Render template with book data, categories, and cart form
-    return render(request, 'index.html', {'data_list': data_list, 'cat': Category.objects.all(), 'form': form})
+    return render(request, 'genres.html', {'data_list': data_list, 'cat': Category.objects.all(), 'form': form})
 
 
 @login_required
 def book_details(request, book_id):
   
-    books = Books.objects.get(id=book_id)  # Fetch book by ID
+    book = Books.objects.get(id=book_id)  # Fetch book by ID
 
-    base_author = books.author.id  # Get author ID from book data
+    base_author = book.author.id  # Get author ID from book data
     author = Author.objects.get(id=base_author)
 
     # Handle POST request for adding book to cart
@@ -58,15 +58,15 @@ def book_details(request, book_id):
             cart_field.save()
 
              # Decrease the stock count
-            books.stock -= 1
-            books.save()
+            book.stock -= 1
+            book.save()
 
             return redirect('cart')  # Redirect to cart page after successful addition
     else:
         form = CartForm()  # Create empty form for GET requests
 
     # Render template with book details and cart form
-    return render(request, 'book_details.html', {'data': books, 'form': form, 'author': author})
+    return render(request, 'book_details.html', {'data': book, 'form': form, 'author': author})
 
 
 @login_required
@@ -79,6 +79,8 @@ def search_books(request):
         keyword = request.POST.get('keyword')
         for book in books:
             if keyword.lower() in book.title.lower():
+                book_list.append(book)
+            if keyword == book.isbn:
                 book_list.append(book)
 
     # Render template with search results

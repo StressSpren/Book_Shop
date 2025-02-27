@@ -22,13 +22,14 @@
         <div class="col-md-8">
             <div class="card shadow-sm p-4">
                 <p class="lead" style="font-size: xx-small;">{{ data.description }}</p>
-                <p><strong>Category:</strong> {{ data.category_name }}</p>
                 
+                {%if data.stock > 0%}
                 <!-- Add to Basket Form -->
                 <form method="POST" class="mt-3">
                     {% csrf_token %}
                     <button type="submit" class="button">Add to Basket</button>
                 </form>
+                {%endif%}
             </div>
         </div>
     </div>

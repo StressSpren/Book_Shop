@@ -48,14 +48,15 @@
           {% if request.user.username == "admin" %}
             <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'admin:index' %}">Admin Panel</a></li>
           {% endif %}
+          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
           <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'fetch_data' %}">Books</a></li>
+          <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'genres' %}">Genres</a></li>
           <li class="nav-item border-start ps-3"><a class="nav-link" href="{% url 'cart' %}">Basket</a></li>
           <li class="nav-item border-start ps-3">
             <!-- Search Form -->
             <form method="POST" action="{% url 'search_books' %}"> 
               {% csrf_token %}
-              <input type="text" name="keyword" placeholder="Enter book here..." required>
+              <input type="text" name="keyword" placeholder="Enter book or ISBN here..." required>
               <button type="submit">Go</button>
             </form>
           </li>

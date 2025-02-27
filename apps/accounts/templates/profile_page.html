@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile Page{% endblock %}
+
+
+{% block content %}
+<div class="login-div">
+    <div class="login-card">
+        <h1>Profile</h1>
+        <p>{{ user.username }}</p>
+        <p>{{ user.first_name }}</p>
+        <p>{{ user.last_name }}</p>
+        <p>{{ user.email }}</p>
+        <p>{{ user.date_joined }}</p>
+        <p>{{ user.last_login }}</p>
+    </div>
+</div>
+{% endblock %}
