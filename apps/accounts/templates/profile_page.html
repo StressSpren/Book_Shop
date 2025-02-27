@@ -14,5 +14,10 @@
         <p>{{ user.date_joined }}</p>
         <p>{{ user.last_login }}</p>
     </div>
+    <!-- Logout form -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button class="button" type="submit">Log Out</button>
+      </form>
 </div>
 {% endblock %}
