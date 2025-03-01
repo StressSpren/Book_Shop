@@ -143,22 +143,7 @@
     <div class="welcome-section">
       <h1 class="sassy-frass-regular" style="font-size: 100px;">Welcome to Bookspren</h1>
     </div>
-      {% endif %}
-  
-
-  <div class="card">
-    {% if user.is_authenticated %}
-      <!-- Navigation links for authenticated users -->
-      <ul class="nav-links">
-        <li class="nav-item"><a href="{% url 'password_change' %}">Password Change</a></li>
-      </ul>
-
-      <!-- Logout form -->
-      <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button class="button" type="submit">Log Out</button>
-      </form>
-    {% else %}
+      
       <!-- Navigation links for unauthenticated users -->
       <ul class="nav-links" style="text-align: center">
         <li><a href="{% url 'login' %}">Log In</a></li>

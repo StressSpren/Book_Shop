@@ -164,7 +164,7 @@ h1{
 
 /********************************************************** Button Styles */
 .nav-button{
-    padding: 10px;
+    padding: 7px;
     background-color: rgba(255, 0, 0, 0.71);
     border: 2px solid black;
     font-weight: bold;
@@ -185,6 +185,25 @@ h1{
 .home-button:hover{
     color: #f7cbf2e6;
 }
+
+.profile-delete-button{
+    border: none;
+    background-color: #f9f9f9;
+    color: red;
+    font-weight: bold;
+}
+.profile-change-button{
+    border: none;
+    background-color: #f9f9f9;
+    
+}
+.profile-change-button a{
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+
+
 /******************************************************* Card Styles */
 
 .card {
