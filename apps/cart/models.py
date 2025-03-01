@@ -7,8 +7,8 @@ from apps.accounts.models import CustomUser
 class Cart(models.Model):
 
     class Meta:
-        verbose_name = 'Cart'
-        verbose_name_plural = 'Cart'
+        verbose_name = 'Basket'
+        verbose_name_plural = 'Baskets'
 
     user_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
     book = models.ForeignKey(Books, on_delete=models.SET_NULL, null = True)

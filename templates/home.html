@@ -7,145 +7,144 @@
   <div class="welcome-section">
     {% if user.is_authenticated %}
       <h1 class="sassy-frass-regular">Welcome, {{ user.username.title }}!</h1>
+  </div>
+
       <!-- In the Basket section -->
       <div class="title-banner">
         <h1>In the Basket</h1>
         <h6 class="nav-item"><a class="nav-link" href="{% url 'cart' %}">View Basket</a></h6>
       </div>
-      <br>
-      <div class="home-item-div">
+      <div class="home-div">
         {% for bk in cart %}
           {% if request.user.username == bk.user_id.username %}
-            <div class="book-card">
-              <a href="{% url 'book_details' bk.book.id %}"> 
-                <img src="{{ bk.book.cover_image.url }}" alt="{{ bk.book.title }}"> 
-              </a>
+            <div class="home-item">
+              <a href="{% url 'book_details' bk.book.id %}">
+                <img src="{{ bk.book.cover_image.url }}" alt="{{ bk.book.title }}">
+              </a> 
+                <div class="book-title">{{ bk.book.title }}</div>
+                <div class="book-price">£{{ bk.book.price }}</div>
+                <div class="book-stock">{{ bk.book.stock}} Left</div>
             </div> 
           {% endif %}  
         {% endfor %}
       </div>
-      <hr>
+      <br>
+      
 
       <!-- Almost Gone section -->
       <div class="title-banner">
         <h1>Almost Gone!</h1>
       </div>
       <br>
-      <div class="home-item-div">
+      <div class="home-div">
         {% for book in books %}
           {% if book.stock != 0 %}
             {% if book.stock <= 12 %}
-              <div class="book-card">
-                <a href="{% url 'book_details' book.id %}">
-                  <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
-                </a>
-                <hr>
-                <p>£{{ book.price }}</p>
-                <hr>
-                <p>Stock: {{ book.stock }}</p>
-                <hr>
-                <form method="POST">
-                  {% csrf_token %}
+            <div class="home-item">
+            <a href="{% url 'book_details' book.id %}">
+              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+            </a> 
+              <div class="book-title">{{ book.title }}</div>
+              <div class="book-price">£{{ book.price }}</div>
+              <div class="book-stock">{{ book.stock}} Left</div>
+              <form method="POST">
+                {% csrf_token %}
                   <input type="hidden" name="id_output" value="{{ book.id }}">
                   <button type="submit" class="home-button">Add to Basket</button>
-                </form>
-              </div>
+              </form>
+            </div>
             {% endif %}
           {% endif %}
         {% endfor %}
       </div>
-      <hr>
-
+      
       <!-- Sale section -->
       <div class="title-banner">
         <h1>Sale!</h1>
       </div>
-      <br>
-      <div class="home-item-div">
+  
+      <div class="home-div">
         {% for book in books %}
           {% if book.stock > 50 %}
-            <div class="book-card">
+            <div class="home-item">
               <a href="{% url 'book_details' book.id %}">
                 <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
-              </a>
-              <hr>
-              <p>£{{ book.price }}</p>
-              <hr>
-              <p>Stock: {{ book.stock }}</p>
-              <hr>
-              <form method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="id_output" value="{{ book.id }}">
-                <button type="submit" class="home-button">Add to Basket</button>
-              </form>
-            </div>
+              </a> 
+                <div class="book-title">{{ book.title }}</div>
+                <div class="book-price">£{{ book.price }}</div>
+                <div class="book-stock">{{ book.stock}} Left</div>
+                <form method="POST">
+                  {% csrf_token %}
+                    <input type="hidden" name="id_output" value="{{ book.id }}">
+                    <button type="submit" class="home-button">Add to Basket</button>
+                </form>
+              </div>
           {% endif %}
         {% endfor %}
       </div>
-      <hr>
+      <br>
+    
 
       <!-- Under £10 section -->
       <div class="title-banner">
         <h1>Under £10!</h1>
       </div>
-      <br>
-      <div class="home-item-div">
+      
+      <div class="home-div">
         {% for book in books %}
           {% if book.stock != 0 %}
             {% if book.price <= 10 %}
-              <div class="book-card">
+              <div class="home-item">
                 <a href="{% url 'book_details' book.id %}">
                   <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
-                </a>
-                <hr>
-                <p>£{{ book.price }}</p>
-                <hr>
-                <p>Stock: {{ book.stock }}</p>
-                <hr>
+                </a> 
+                <div class="book-title">{{ book.title }}</div>
+                <div class="book-price">£{{ book.price }}</div>
+                <div class="book-stock">{{ book.stock}} Left</div>
                 <form method="POST">
                   {% csrf_token %}
-                  <input type="hidden" name="id_output" value="{{ book.id }}">
-                  <button type="submit" class="home-button">Add to Basket</button>
+                    <input type="hidden" name="id_output" value="{{ book.id }}">
+                    <button type="submit" class="home-button">Add to Basket</button>
                 </form>
               </div>
             {% endif %}
           {% endif %}
         {% endfor %}
       </div>
-      <hr>
+      <br>
 
       <!-- Out of Stock section -->
       <div class="title-banner">
         <h1>Out of Stock but coming back soon!</h1>
       </div>
-      <br>
-      <div class="home-item-div">
+      
+      <div class="home-div">
         {% for book in books %}
           {% if book.stock == 0 %}
-            <div class="book-card">
-              <a href="{% url 'book_details' book.id %}">
-                <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
-              </a>
-              <hr>
-              <p>£{{ book.price }}</p>
-              <hr>
-              <p>Stock: {{ book.stock }}</p>
-              <hr>
-              <form method="POST">
-                {% csrf_token %}
+          <div class="home-item">
+            <a href="{% url 'book_details' book.id %}">
+              <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+            </a> 
+            <div class="book-title">{{ book.title }}</div>
+            <div class="book-price">£{{ book.price }}</div>
+            <div class="book-stock">{{ book.stock}} Left</div>
+            <form method="POST">
+              {% csrf_token %}
                 <input type="hidden" name="id_output" value="{{ book.id }}">
                 <button type="submit" class="home-button">Add to Basket</button>
-              </form>
-            </div>
+            </form>
+          </div>
           {% endif %}
         {% endfor %}
       </div>
       <hr>
       
     {% else %}
+    <div class="welcome-section">
       <h1 class="sassy-frass-regular" style="font-size: 100px;">Welcome to Bookspren</h1>
-    {% endif %}
-  </div>
+    </div>
+      {% endif %}
+  
 
   <div class="card">
     {% if user.is_authenticated %}

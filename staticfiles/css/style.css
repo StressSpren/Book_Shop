@@ -28,6 +28,10 @@ h1{
     
 }
 
+p{
+    margin-bottom: 0;
+}
+
 /* Navbar Styles */
 .navbar-header {
     font-size: 50px;
@@ -254,10 +258,15 @@ button:hover {
 
 .catergory-div{
     display: flex;
-    border:2px solid black;
-    box-shadow: inset 2px 2px 10px 2px;
-    padding: 5px;
+    margin: 10px;
+    border:2px solid #f8dcf5e6;
+    padding: 10px;
     gap: 5px;
+}
+
+.category-card:hover{   
+    opacity: 50%;
+
 }
 
 
