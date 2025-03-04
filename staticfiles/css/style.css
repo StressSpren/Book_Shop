@@ -58,7 +58,7 @@ h1{
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.102);
     display: inline-block;
     max-width: 300px;
     width: 80%;   
@@ -165,7 +165,7 @@ h1{
 /********************************************************** Button Styles */
 .nav-button{
     padding: 7px;
-    background-color: rgba(255, 0, 0, 0.71);
+    background-color: #ff0000b5;
     border: 2px solid black;
     font-weight: bold;
     font-family: "Roboto", serif;
@@ -180,7 +180,7 @@ h1{
 .home-button{
     padding: 10px;
     border: none;
-    background-color: white;
+    background-color: #ffffff;
 }
 .home-button:hover{
     color: #f7cbf2e6;
@@ -199,7 +199,7 @@ h1{
 }
 .profile-change-button a{
     text-decoration: none;
-    color: green;
+    color: #008000;
     font-weight: bold;
 }
 
@@ -316,3 +316,19 @@ h1{
     
 
 }
+
+/****************************************************PROFILE DIV */
+.profile-div{
+    width: 100%;
+    text-align: center;
+}
+.profile-card{
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #f8dcf5e6;
+    background-color: #f9f9f9;
+    
+}
+
