@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import Cart_Deletion_Form
 from .models import Cart
-from apps.api.models import Books
 
 @login_required
 def cart(request):
