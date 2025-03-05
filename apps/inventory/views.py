@@ -87,8 +87,8 @@ def search_books(request):
     return render(request, "search.html", {"book_title": book_list})
 
 
-
-@login_required
+# @login_required
+# Including @login_requried here gets in the way of image retrieval and creation, comment out when adding and re-enable when going live. 
 def home_view(request):
 
     books = Books.objects.all()
