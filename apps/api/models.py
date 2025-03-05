@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -35,6 +36,12 @@ class Books(models.Model):
     cover_image = models.ImageField(upload_to='book_pics/', blank=True, null=True)
     published_date = models.DateField()
     isbn = models.CharField(max_length=13, unique=True)
+
+    def clean(self):
+        if self.price < 0:
+            raise ValidationError("Price cannot be negative.")
+        if self.stock < 0:
+            raise ValidationError("Stock cannot be negative.")
 
     def __str__(self):
         return self.title

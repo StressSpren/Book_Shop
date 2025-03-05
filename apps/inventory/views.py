@@ -88,7 +88,7 @@ def search_books(request):
 
 
 
-
+@login_required
 def home_view(request):
 
     books = Books.objects.all()
