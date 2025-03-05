@@ -43,10 +43,6 @@ INSTALLED_APPS = [
 
     # API framework
     "rest_framework",
-
-    # Crispy Forms,
-    "crispy_forms",
-    "crispy_bootstrap5",
     
     # My apps
     "apps.accounts",
@@ -178,9 +174,3 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
-
-
-
-# Crispy Form configuration
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"
