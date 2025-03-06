@@ -23,7 +23,7 @@
               </a> 
                 <div class="book-title">{{ bk.book.title }}</div>
                 <div class="book-price">£{{ bk.book.price }}</div>
-                <div class="book-stock">{{ bk.book.stock}} Left</div>
+                <div class="book-stock">{{ bk.book.stock }} Left</div>
             </div> 
           {% endif %}  
         {% endfor %}
@@ -46,7 +46,7 @@
             </a> 
               <div class="book-title">{{ book.title }}</div>
               <div class="book-price">£{{ book.price }}</div>
-              <div class="book-stock">{{ book.stock}} Left</div>
+              <div class="book-stock">{{ book.stock }} Left</div>
               <form method="POST">
                 {% csrf_token %}
                   <input type="hidden" name="id_output" value="{{ book.id }}">
@@ -72,7 +72,7 @@
               </a> 
                 <div class="book-title">{{ book.title }}</div>
                 <div class="book-price">£{{ book.price }}</div>
-                <div class="book-stock">{{ book.stock}} Left</div>
+                <div class="book-stock">{{ book.stock }} Left</div>
                 <form method="POST">
                   {% csrf_token %}
                     <input type="hidden" name="id_output" value="{{ book.id }}">
