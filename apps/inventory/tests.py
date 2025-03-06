@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 # Create your tests here.
-
+ 
 
 class DisplayPageTestCase(TestCase):
 

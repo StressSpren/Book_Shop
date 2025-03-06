@@ -15,4 +15,4 @@ class Cart(models.Model):
     
     
     def __str__(self):
-        return f"[{self.user_id.username}] {self.book.title}"
+        return f"[{self.user_id.username}] -{self.book.title} - £{self.book.price}"

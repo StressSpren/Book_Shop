@@ -1,7 +1,7 @@
 from django.test import TestCase
 from apps.accounts.models import CustomUser
 from django.core.exceptions import ValidationError
-
+ 
 class UserTestCase(TestCase):
     def setUp(self):
         self.user = CustomUser.objects.create(username='Timothy', first_name='Timmy', last_name='Egbert', email="Tim@Tim.com")
