@@ -36,6 +36,7 @@ class Books(models.Model):
     cover_image = models.ImageField(upload_to='book_pics/', blank=True, null=True)
     published_date = models.DateField()
     isbn = models.CharField(max_length=13, unique=True)
+    for_sale = models.BooleanField(default=False, null=True, blank=True)
 
     def clean(self):
         if self.price < 0:

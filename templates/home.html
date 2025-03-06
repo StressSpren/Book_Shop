@@ -58,14 +58,14 @@
         {% endfor %}
       </div>
       
-      <!-- Sale section -->
+      <!-- Books Under £20 section -->
       <div class="title-banner">
-        <h1>Sale!</h1>
+        <h1>Under £20!</h1>
       </div>
   
       <div class="home-div">
         {% for book in books %}
-          {% if book.stock > 50 %}
+          {% if book.price < 20 and book.price > 10 %}
             <div class="home-item">
               <a href="{% url 'book_details' book.id %}">
                 <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
@@ -80,6 +80,7 @@
                 </form>
               </div>
           {% endif %}
+          
         {% endfor %}
       </div>
       <br>
@@ -115,7 +116,7 @@
 
       <!-- Out of Stock section -->
       <div class="title-banner">
-        <h1>Out of Stock but coming back soon!</h1>
+        <h1>Out of Stock</h1>
       </div>
       
       <div class="home-div">

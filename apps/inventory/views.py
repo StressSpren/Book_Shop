@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from apps.api.models import Books, Category, Author
 from apps.cart.models import Cart
 from apps.accounts.models import CustomUser as User
-
+import math
 
 @login_required  # Ensures user must be logged in to access this view
 def genres(request):
@@ -96,6 +96,13 @@ def home_view(request):
     authors = Author.objects.all() # Fetch all authors from database
     cart = Cart.objects.all()
 
+    # Sale for items over a certain stock to reduce by 80%
+    
+    sale = Books.objects.filter(stock__gt = 50)
+    
+    
+    
+        
     
     
 
@@ -119,4 +126,4 @@ def home_view(request):
         form = CartForm()  # Create empty form for GET requests
 
 
-    return render(request, 'home.html', {'books': books, 'categories': categories, 'authors': authors, 'cart': cart, 'form': form})
+    return render(request, 'home.html', {'books': books, 'categories': categories, 'authors': authors, 'cart': cart, 'form': form, 'sale': sale})
