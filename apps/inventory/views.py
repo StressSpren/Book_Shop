@@ -97,13 +97,7 @@ def home_view(request):
     cart = Cart.objects.all()
 
     # Sale for items over a certain stock to reduce by 80%
-    
     sale = Books.objects.filter(stock__gt = 50)
-    
-    
-    
-        
-    
     
 
     if request.method == "POST" and "id_output" in request.POST:
