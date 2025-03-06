@@ -96,10 +96,6 @@ def home_view(request):
     authors = Author.objects.all() # Fetch all authors from database
     cart = Cart.objects.all()
 
-    # Sale for items over a certain stock to reduce by 80%
-    sale = Books.objects.filter(stock__gt = 50)
-    
-
     if request.method == "POST" and "id_output" in request.POST:
         form = CartForm(request.POST)
         if form.is_valid():
@@ -120,4 +116,4 @@ def home_view(request):
         form = CartForm()  # Create empty form for GET requests
 
 
-    return render(request, 'home.html', {'books': books, 'categories': categories, 'authors': authors, 'cart': cart, 'form': form, 'sale': sale})
+    return render(request, 'home.html', {'books': books, 'categories': categories, 'authors': authors, 'cart': cart, 'form': form})

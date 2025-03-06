@@ -57,6 +57,34 @@
           {% endif %}
         {% endfor %}
       </div>
+
+      <!-- Sale -->
+      <div class="title-banner">
+        <h1>Sale!</h1>
+      </div>
+  
+      <div class="home-div">
+        {% for book in books %}
+          {% if book.stock > 60 %}
+            <div class="home-item">
+              <a href="{% url 'book_details' book.id %}">
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+              </a> 
+                <div class="book-title">{{ book.title }}</div>
+                <div class="book-price">Was: £{{ book.original_price }}</div>
+                <div class="book-price">Now: £{{ book.price }}</div>
+                <div class="book-stock">{{ book.stock }} Left</div>
+                <form method="POST">
+                  {% csrf_token %}
+                    <input type="hidden" name="id_output" value="{{ book.id }}">
+                    <button type="submit" class="home-button">Add to Basket</button>
+                </form>
+              </div>
+          {% endif %}
+          
+        {% endfor %}
+      </div>
+      <br>
       
       <!-- Books Under £20 section -->
       <div class="title-banner">
