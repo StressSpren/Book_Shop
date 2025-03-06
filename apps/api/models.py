@@ -42,15 +42,14 @@ class Books(models.Model):
 
     def save(self, *args, **kwargs):
 
+        # Add item to sale when above 60 stock
+        if self.stock > 60 and not self.for_sale:
+            self.for_sale = True
+
         # Apply discount when for_sale is first set to True
         if self.for_sale and self.price == self.original_price:
             self.price = self.original_price * Decimal('0.8')
         
-        # Add item to sale when above 60 stock
-        if self.stock > 60 and not self.for_sale:
-            self.for_sale = True
-            
-
         # Remove discount when stock is less than 10 and change for_sale to False
         if self.for_sale and self.stock < 10 and self.price != self.original_price:
             self.for_sale = False
