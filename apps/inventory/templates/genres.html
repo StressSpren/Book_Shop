@@ -9,7 +9,7 @@
         {% for x in d %}
           <div class="category-card">
             <a href="{% url 'book_details' x.id %}">
-              <img src="{{ x.cover_image.url }}" style="height: 150px; width: 100px" class="d-block mx-auto" alt="{{ x.title }}">
+              <img src="{{ x.cover_image.url }}" style="height: 150px; width: 100px" class="category-image" alt="{{ x.title }}">
             </a>
             
           </div>
